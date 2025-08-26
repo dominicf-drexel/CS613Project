@@ -259,11 +259,36 @@ def CategoricalToOperable_QEDUCYRS(value: str, row: list) -> List[str]:
     ]
     return fields
 
-def CategoricalToOperable(fieldname: str, value: str, row: list) -> List[str]:
+
+
+
+def ConsolidatedCategoricalToOperable_EDUC(value: str, row: list) -> List[str]:
+    row.append(1 if value in ["010", "011", "012", "013", "014", "015", "016", "017"] else 0)
+    row.append(1 if value in ["020", "021"] else 0)
+    row.append(1 if value in ["030"] else 0)
+    row.append(1 if value in ["031", "032"] else 0)
+    row.append(1 if value in ["040"] else 0)
+    row.append(1 if value in ["041", "042", "043"] else 0)
+    row.append(1 if value == "999" else 0)
+
+    fields: list[str] = [
+    "EDUC_Less than HS Graduate"
+    , "EDUC_High school graduate"
+    , "EDUC_Some college"
+    , "EDUC_Associate degree"
+    , "EDUC_Bachelor's degree"
+    , "EDUC_Graduate or Professional degree"
+
+    , "EDUC_NIU (Not in universe)"
+    ]
+    return fields
+
+
+def CategoricalToOperable(fieldname: str, value: str, row: list) -> List[str] | None:
     if (fieldname.casefold() == "SEX".casefold()):
         return CategoricalToOperable_SEX(value, row)
     elif (fieldname.casefold() == "EDUC".casefold()):
-        return CategoricalToOperable_EDUC(value, row)
+        return ConsolidatedCategoricalToOperable_EDUC(value, row)
     elif (fieldname.casefold() == "EDUCYRS".casefold()):
         return CategoricalToOperable_EDUCYRS(value, row)
     elif (fieldname.casefold() == "SPOUSEPRES".casefold()):
@@ -282,10 +307,56 @@ def CategoricalToOperable(fieldname: str, value: str, row: list) -> List[str]:
         return CategoricalToOperable_QEDUCYRS(value, row)
 
     else:
-        row.append(float(0 if value == "" else value))
+        return None
 
-        fields: list[str] = [fieldname]
-        return fields
+def ContinuousToCategorical_AGE(value: str, row: list) -> List[str]:
+    intvalue: int = -1
+    try:
+        intvalue = int(value)
+    except:
+        raise Exception()
+    
+    breaks: list[int] = [
+         5,
+        10,
+        15,
+        20,
+        25,
+        30,
+        35,
+        40,
+        45,
+        50,
+        55,
+        60,
+        65,
+        70,
+        75,
+        80,
+        85,
+    ]
+
+    fields: list[str] = []
+    prev: int = 0
+    for i in range(len(breaks)):
+        fieldvalue: int = 1 if intvalue >= prev and intvalue <= breaks[i] else 0
+        fieldlabel: str = f"Age: {prev} to {breaks[i]}"
+        row.append(fieldvalue)
+        fields.append(fieldlabel)
+        prev = breaks[i]
+
+    lastfieldvalue: int = 1 if intvalue >= prev else 0
+    lastfieldlabel: str = f"Age: {prev} and over"
+    row.append(lastfieldvalue)
+    fields.append(lastfieldlabel)
+
+    return fields
+
+def ContinuousToCategorical(fieldname: str, value: str, row: list) -> List[str] | None:
+    if (fieldname.casefold() == "AGE".casefold()):
+        return ContinuousToCategorical_AGE(value, row)
+    else:
+        return None
 
 def TransformIntoFeatures(rowdata: list[list[str]], columnnames: list[str]) -> Tuple[list[list[str]], list[str]]:
     readyrows: list = []
@@ -297,10 +368,24 @@ def TransformIntoFeatures(rowdata: list[list[str]], columnnames: list[str]) -> T
         for j in range(len(columnnames)):
             value = rowdata[i][j]
             columnname: str = columnnames[j]
-            createdcolumns: list[str] = CategoricalToOperable(columnname, value, newrow)
-            if (i == 0):
+
+            createdcolumns: list[str] | None = None
+            
+            createdcolumns = CategoricalToOperable(columnname, value, newrow)
+            if (createdcolumns is not None):
                 readycolumnnames.extend(createdcolumns)
+                continue
     
+            createdcolumns = ContinuousToCategorical(columnname, value, newrow)
+            if (createdcolumns is not None):
+                readycolumnnames.extend(createdcolumns)
+                continue
+
+            newrow.append(float(0 if value == "" else value))
+
+            fields: list[str] = [columnname]
+            readycolumnnames.extend(fields)
+
         readyrows.append(newrow)
 
     return (readyrows, readycolumnnames)

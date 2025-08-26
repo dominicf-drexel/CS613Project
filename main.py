@@ -5,7 +5,7 @@ from MatrixCreation import RowsToMatrix, ExtractX, ExtractY
 
 # comment for test commit - need to delete this
 
-filepath: str = "../data/atus_00003.csv"
+filepath: str = "./data/atus_00003.csv"
 (rowsdata, columnnames) = LoadATUSExtract(filepath)
 print(columnnames)
 
