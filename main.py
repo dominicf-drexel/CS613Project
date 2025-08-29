@@ -2,15 +2,16 @@ import numpy as np
 from DataLoad import LoadATUSExtract
 from CreateFeatures import TransformIntoFeatures
 from MatrixCreation import RowsToMatrix, ExtractX, ExtractY
+import KNN
 
 # comment for test commit - need to delete this
 
 filepath: str = "./data/atus_00003.csv"
 (rowsdata, columnnames) = LoadATUSExtract(filepath)
-print(columnnames)
+#print(columnnames)
 
 (readyrows, readycolumns) = TransformIntoFeatures(rowsdata, columnnames)
-print(readycolumns)
+#print(readycolumns)
 
 (matrixdata, matrixcolumnnames) = RowsToMatrix(readyrows, readycolumns)
 print(matrixcolumnnames)
@@ -20,4 +21,16 @@ print(x.shape)
 
 y: np.ndarray = ExtractY(matrixdata, "ACT_WORK", matrixcolumnnames)
 print(y.shape)
-print(y)
+#print(y)
+
+
+# TODO split data
+#x_train = x.copy()
+#y_train = y.copy()
+#x_test = x.copy()
+
+# knn regression algorithm
+# returns predictions as np.array
+#knn = KNN(k=5)
+#knn.train(x_train, y_train)
+#predictions = knn.predict(x_test)
