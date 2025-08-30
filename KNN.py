@@ -15,18 +15,23 @@ class KNN:
 
         for x in x_test:
             distances = []
-            #for (feature, target) in (self.x_train, self.y_train):
             for i in range(len(self.x_train)):
-                # compute distance
-                distance = 0
+                # compute the euclidean distance
+                distance = np.sqrt(np.sum((x - self.x_train[i]) ** 2))
                 target = self.y_train[i]
                 distances.append((distance, target))
 
             # sort the distances
+            # need the lambda function because sorting a tuple
+            distances.sort(key=lambda x: x[0])
+            k_nearest = distances[:self.k]
 
             # for regression (not classification)
             # get the average of the closest k distances
-            prediction = distances[0]
+            targets = []
+            for (dist, target) in k_nearest:
+                    targets.append(target)
+            prediction = np.mean(targets)
             predictions.append(prediction)
         
         return np.array(predictions)
