@@ -31,6 +31,5 @@ print(y.shape)
 
 # knn regression algorithm
 # returns predictions as np.array
-#knn = KNN(k=5)
-#knn.train(x_train, y_train)
+#knn = KNN(x_train, y_train, k=5)
 #predictions = knn.predict(x_test)
