@@ -3,7 +3,7 @@ from DataLoad import LoadATUSExtract
 from CreateFeatures import TransformIntoFeatures
 from MatrixCreation import RowsToMatrix, ExtractX, ExtractY
 from DataOperations import GenerateTrainingValidationIndices, GenerateTrainingValidationIndicesByFeatureValue, GetSubset
-from LinearRegression import LinearRegression
+import LinearRegression
 import KNN
 
 #
@@ -41,13 +41,14 @@ print(f"validation results = {validationresults.shape}")
 #Analysis:
 
 # linear regression algorithm
-lr = LinearRegression()
-print("START linear regression: fit")
-lr.fit(trainingdata, trainingresults)
-print("START linear regression: predict")
-linear_predictions = lr.predict(validationdata)
-print(f"linear predictions shape = {linear_predictions.shape}")
-# TODO linear regression evaluation
+#lr = LinearRegression()
+#print("START linear regression: fit")
+#lr.fit(trainingdata, trainingresults)
+#print("START linear regression: predict")
+#linear_predictions = lr.predict(validationdata)
+#print(f"linear predictions shape = {linear_predictions.shape}")
+# linear regression evaluation
+LinearRegression.s_folds_validation(trainingdata, trainingresults, 5)
 
 # knn regression algorithm
 print("START k nearest neighbors: fit")
@@ -55,10 +56,16 @@ knn = KNN.KNN(trainingdata, trainingresults, k=5)
 print("START k nearest neighbors: predict")
 knn_predictions = knn.predict(validationdata)
 print(f"knn predictions shape = {knn_predictions.shape}")
-# TODO knn regression evalation
+# knn regression evalation
+knn_mse = np.mean((validationresults - knn_predictions) ** 2)
+print(f"KNN MSE: {knn_mse}")
+
+
+# ensemble algorithm consists of the following models
+# s-fold linear regression models
+# 1 KNN model
 
 """
-# TODO ensemble algorithm
 ensemble_predictions = []
 x_test = []
 for i in range(len(x_test)):

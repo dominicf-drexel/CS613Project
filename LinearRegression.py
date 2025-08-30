@@ -43,7 +43,10 @@ class LinearRegression:
 
 
 
-def s_folds_validation(processed_data, S):
+def s_folds_validation(x, y, S):
+    bias_column = np.ones((x.shape[0],1))
+    processed_data = np.concatenate((bias_column, x, y.reshape(-1,1)), axis=1)   
+    
     rmse_array = np.empty(20)
     for i in range(20):
         np.random.seed(i)
