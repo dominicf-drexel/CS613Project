@@ -42,21 +42,16 @@ print(f"validation results = {validationresults.shape}")
 #Analysis:
 
 # linear regression algorithm
-#lr = LinearRegression()
-#print("START linear regression: fit")
-#lr.fit(trainingdata, trainingresults)
-#print("START linear regression: predict")
-#linear_predictions = lr.predict(validationdata)
-#print(f"linear predictions shape = {linear_predictions.shape}")
-# linear regression evaluation
+# currently statistics are printed directly
+# from within the s_folds_validation method
 LinearRegression.s_folds_validation(trainingdata, trainingresults, 5)
 
 # knn regression algorithm
-print("START k nearest neighbors: fit")
+#print("START k nearest neighbors: fit")
 knn = KNN.KNN(trainingdata, trainingresults, k=5)
-print("START k nearest neighbors: predict")
+#print("START k nearest neighbors: predict")
 knn_predictions = knn.predict(validationdata)
-print(f"knn predictions shape = {knn_predictions.shape}")
+#print(f"knn predictions shape = {knn_predictions.shape}")
 # knn regression evalation
 #knn_mse = np.mean((validationresults - knn_predictions) ** 2)
 knn_mse = Statistics.ComputeMSE(validationresults, knn_predictions)
@@ -73,10 +68,9 @@ print(f"KNN R2: {knn_r2}")
 # s-fold linear regression models
 # 1 KNN model
 
-"""
+
 ensemble_predictions = []
-x_test = []
-for i in range(len(x_test)):
+for i in range(len(validationdata)):
     predictions = []
 
     # add the linear regression predictions
@@ -86,7 +80,12 @@ for i in range(len(x_test)):
     # add the knn regression predictions
     predictions.append(knn_predictions[i])
     
-    # ensemble algorithm
+    # average all predictions for this point
+    pred = np.mean(predictions)
+    ensemble_predictions.append(pred)
+
+ensemble_predictions = np.array(ensemble_predictions)
+    
 """
     
 
