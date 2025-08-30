@@ -9,7 +9,7 @@ import Statistics
 
 #
 #Load data:
-filepath: str = "./data/atus_00003.csv"
+filepath: str = "./data/atus_00005.csv"
 (rowsdata, columnnames) = LoadATUSExtract(filepath)
 #print(columnnames)
 
@@ -25,7 +25,7 @@ xcolumnnames: list[str]
 x, xcolumnnames = ExtractX(matrixdata, matrixcolumnnames, True)
 print(f"x.shape={x.shape}")
 
-y: np.ndarray = ExtractY(matrixdata, "ACT_WORK", matrixcolumnnames)
+y: np.ndarray = ExtractY(matrixdata, "ACT_PCARE_SLEEP_010101", matrixcolumnnames)
 print(f"y.shape={y.shape}")
 #print(y)
 

@@ -1,0 +1,1396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ipums-ddi-xslt.xsl"?>
+<codeBook ID="ddi2-4b988ad0-516f-013e-da79-02420a1c0306-atus_00005.dat-www.atusdata.org" version="2.5" xmlns="ddi:codebook:2_5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="ddi:codebook:2_5 http://www.ddialliance.org/Specification/DDI-Codebook/2.5/XMLSchema/codebook.xsd">
+  <docDscr>
+    <citation>
+      <titlStmt>
+        <titl>Codebook for an ATUS Data Extract</titl>
+        <subTitl>DDI 2.5 metadata describing the extract file  'atus_00005.dat'</subTitl>
+        <IDNo>ddi2-4b988ad0-516f-013e-da79-02420a1c0306-atus_00005.dat-www.atusdata.org</IDNo>
+      </titlStmt>
+      <rspStmt>
+        <AuthEnty affiliation="University of Minnesota">IPUMS</AuthEnty>
+      </rspStmt>
+      <prodStmt>
+        <producer abbr="IPUMS" affiliation="University of Minnesota" role="Documentation">IPUMS</producer>
+        <prodDate date="2025-08-30">August 30, 2025</prodDate>
+        <prodPlac>IPUMS, 50 Willey Hall, 225 - 19th Avenue South, Minneapolis, MN 55455</prodPlac>
+      </prodStmt>
+      <distStmt>
+        <contact URI="https://ipums.org" affiliation="University of Minnesota">IPUMS</contact>
+      </distStmt>
+    </citation>
+  </docDscr>
+  <stdyDscr>
+    <citation>
+      <titlStmt>
+        <titl>User Extract atus_00005.dat</titl>
+      </titlStmt>
+      <rspStmt>
+        <AuthEnty affiliation="University of Minnesota">IPUMS</AuthEnty>
+      </rspStmt>
+      <prodStmt>
+        <producer abbr="IPUMS" affiliation="University of Minnesota" role="Documentation">IPUMS</producer>
+        <prodDate date="2025-08-30">August 30, 2025</prodDate>
+        <prodPlac>IPUMS, 50 Willey Hall, 225 - 19th Avenue South, Minneapolis, MN 55455</prodPlac>
+      </prodStmt>
+      <distStmt>
+        <contact URI="https://ipums.org" affiliation="University of Minnesota">IPUMS</contact>
+      </distStmt>
+      <serStmt>
+        <serName abbr="atus">IPUMS ATUS</serName>
+        <serInfo>DOI:10.18128/D060.V3.2</serInfo>
+      </serStmt>
+      <verStmt>
+        <version date="2025-08-30"/>
+      </verStmt>
+    </citation>
+    <stdyInfo>
+      <subject>
+        <topcClas vocab="IPUMS">Technical Household Variables -- HOUSEHOLD</topcClas>
+        <topcClas vocab="IPUMS">Technical Person Variables -- PERSON</topcClas>
+        <topcClas vocab="IPUMS">Weights Variables -- PERSON</topcClas>
+        <topcClas vocab="IPUMS">Core Demographic Variables -- PERSON</topcClas>
+        <topcClas vocab="IPUMS">Education Variables -- PERSON</topcClas>
+        <topcClas vocab="IPUMS">Spouse Characteristic Variables -- PERSON</topcClas>
+        <topcClas vocab="IPUMS">Imputation Flags Variables -- PERSON</topcClas>
+      </subject>
+      <sumDscr ID="sdatref-42">
+        <timePrd date="2020" event="single">2020</timePrd>
+        <nation abbr="us">United States</nation>
+      </sumDscr>
+      <sumDscr ID="sdatref-43">
+        <timePrd date="2021" event="single">2021</timePrd>
+        <nation abbr="us">United States</nation>
+      </sumDscr>
+      <sumDscr ID="sdatref-44">
+        <timePrd date="2022" event="single">2022</timePrd>
+        <nation abbr="us">United States</nation>
+      </sumDscr>
+      <sumDscr ID="sdatref-45">
+        <timePrd date="2023" event="single">2023</timePrd>
+        <nation abbr="us">United States</nation>
+      </sumDscr>
+      <sumDscr ID="sdatref-46">
+        <timePrd date="2024" event="single">2024</timePrd>
+        <nation abbr="us">United States</nation>
+      </sumDscr>
+      <notes><![CDATA[Additional notes on a sample that is part of this study:  ATUS 2020
+]]></notes>
+      <notes><![CDATA[Additional notes on a sample that is part of this study:  ATUS 2021
+]]></notes>
+      <notes><![CDATA[Additional notes on a sample that is part of this study:  ATUS 2022
+]]></notes>
+      <notes><![CDATA[Additional notes on a sample that is part of this study:  ATUS 2023
+]]></notes>
+      <notes><![CDATA[Additional notes on a sample that is part of this study:  ATUS 2024
+]]></notes>
+    </stdyInfo>
+    <dataAccs>
+      <useStmt>
+        <confDec required="no"><![CDATA[None]]></confDec>
+        <contact URI="http://atusdata.org/" affiliation="IPUMS">ATUS</contact>
+        <citReq><![CDATA[Publications and research reports based on the ATUS database must cite it appropriately. The citation should include the following:
+
+Sarah M. Flood, Liana C. Sayer, Daniel Backman, and Annie Chen. American Time Use Survey Data Extract Builder: Version 3.2 [dataset]. College Park, MD: University of Maryland and Minneapolis, MN: IPUMS, 2023. https://doi.org/10.18128/D060.V3.2
+
+The licensing agreement for use of ATUS data requires that users supply us with the title and full citation for any publications, research reports, or educational materials making use of the data or documentation. Please add your citation to the IPUMS bibliography: http://bibliography.ipums.org/]]></citReq>
+        <conditions><![CDATA[Users of ATUS data must agree to abide by the conditions of use. A user's license is valid for one year and may be renewed.  Users must agree to the following conditions:
+
+(1) No fees may be charged for use or distribution of the data.  All persons are granted a limited license to use these data, but you may not charge a fee for the data if you distribute it to others.
+
+(2) Cite IPUMS appropriately.  For information on proper citation, refer to the citation requirement section of this DDI document.
+
+(3) Tell us about any work you do using the IPUMS.  Publications, research reports, or presentations making use of ATUS should be added to our Bibliography. Continued funding for the IPUMS depends on our ability to show our sponsor agencies that researchers are using the data for productive purposes.
+
+(4) Use it for GOOD -- never for EVIL.]]></conditions>
+        <disclaimer>The user of the data acknowledges that the original collector of the data, the authorized distributor of the data, and the relevant funding agency bear no responsibility for use of the data or for interpretations or inferences based upon such uses.</disclaimer>
+      </useStmt>
+    </dataAccs>
+    <notes><![CDATA[User-provided description:  Revision of (CS 613 Project data extract)]]></notes>
+    <notes>This extract is a revision of the user's previous extract, ID 7858873.</notes>
+  </stdyDscr>
+  <fileDscr ID="ExtractData">
+    <fileTxt>
+      <fileName>atus_00005.dat</fileName>
+      <fileCont>Microdata records</fileCont>
+      <fileStrc type="rectangular"/>
+      <fileType charset="ISO-8859-1">ISO-8859-1 data file</fileType>
+      <format>fixed length fields</format>
+      <filePlac>IPUMS, 50 Willey Hall, 225 - 19th Avenue South, Minneapolis, MN 55455</filePlac>
+    </fileTxt>
+  </fileDscr>
+  <dataDscr><var ID="YEAR" dcml="0" files="ExtractData" intrvl="contin" name="YEAR">
+  <location EndPos="5" StartPos="1" width="5"/>
+  <labl>Survey year</labl>
+  <txt><![CDATA[YEAR reports the survey year.
+
+There are several other variables that report date information on the diary day.  See DATE for the date of the diary day, DAY for the day of the diary day, and MONTH for the month of the diary day.
+
+The ATUS interview took place 2-5 months after the final CPS interview.  Date information is also available for the final CPS interview.  See MONTH_CPS8 for the month of the final CPS interview and YEAR_CPS8 for the year of the final CPS interview.]]></txt>
+  <codInstr><![CDATA[YEAR is a four-digit numeric variable reporting the survey year.]]></codInstr>
+  <concept vocab="IPUMS">Technical Household Variables -- HOUSEHOLD</concept>
+  <varFormat schema="other" type="numeric"/>
+</var>
+<var ID="CASEID" dcml="0" files="ExtractData" intrvl="contin" name="CASEID">
+  <location EndPos="19" StartPos="6" width="14"/>
+  <labl>ATUS Case ID</labl>
+  <txt><![CDATA[CASEID is an identifying number unique to each household. 
+
+CASEID is the same as TUCASEID which is on the public use ATUS files. For user convenience CASEID has been converted to a numeric variable. Users who are trying to match ATUS-X files with public use ATUS files must be sure that CASEID and TUCASEID are of the same type.]]></txt>
+  <codInstr><![CDATA[CodesCASEID is a 14-digit numeric variable uniquely identifying each household.]]></codInstr>
+  <concept vocab="IPUMS">Technical Household Variables -- HOUSEHOLD</concept>
+  <varFormat schema="other" type="numeric"/>
+</var>
+<var ID="SERIAL" dcml="0" files="ExtractData" intrvl="contin" name="SERIAL">
+  <location EndPos="26" StartPos="20" width="7"/>
+  <labl>Household serial number</labl>
+  <txt><![CDATA[SERIAL is an identifying number unique to each respondent.]]></txt>
+  <codInstr><![CDATA[CodesSERIAL is a 7-digit numeric variable.]]></codInstr>
+  <concept vocab="IPUMS">Technical Household Variables -- HOUSEHOLD</concept>
+  <varFormat schema="other" type="numeric"/>
+</var>
+<var ID="PERNUM" dcml="0" files="ExtractData" intrvl="discrete" name="PERNUM">
+  <location EndPos="28" StartPos="27" width="2"/>
+  <labl>Person number (general)</labl>
+  <txt><![CDATA[PERNUM is constructed to uniquely identify each person within a given household. It is available for all household members whether they were present in the household at the time of the ATUS, CPS, or both. This is the only line number variable available for each person in every household. 
+
+LINENO was assigned to all household members present at the time of the ATUS interview. LINENO_CPS8 was assigned to all household members present at the time of the final CPS interview, 2-5 months before the ATUS interview. Because household composition could change, PERNUM, LINENO, and LINENO_CPS8 may not match.]]></txt>
+  <catgry>
+    <catValu>01</catValu>
+    <labl>1</labl>
+  </catgry>
+  <catgry>
+    <catValu>02</catValu>
+    <labl>2</labl>
+  </catgry>
+  <catgry>
+    <catValu>03</catValu>
+    <labl>3</labl>
+  </catgry>
+  <catgry>
+    <catValu>04</catValu>
+    <labl>4</labl>
+  </catgry>
+  <catgry>
+    <catValu>05</catValu>
+    <labl>5</labl>
+  </catgry>
+  <catgry>
+    <catValu>06</catValu>
+    <labl>6</labl>
+  </catgry>
+  <catgry>
+    <catValu>07</catValu>
+    <labl>7</labl>
+  </catgry>
+  <catgry>
+    <catValu>08</catValu>
+    <labl>8</labl>
+  </catgry>
+  <catgry>
+    <catValu>09</catValu>
+    <labl>9</labl>
+  </catgry>
+  <catgry>
+    <catValu>10</catValu>
+    <labl>10</labl>
+  </catgry>
+  <catgry>
+    <catValu>11</catValu>
+    <labl>11</labl>
+  </catgry>
+  <catgry>
+    <catValu>12</catValu>
+    <labl>12</labl>
+  </catgry>
+  <catgry>
+    <catValu>13</catValu>
+    <labl>13</labl>
+  </catgry>
+  <catgry>
+    <catValu>14</catValu>
+    <labl>14</labl>
+  </catgry>
+  <catgry>
+    <catValu>15</catValu>
+    <labl>15</labl>
+  </catgry>
+  <catgry>
+    <catValu>16</catValu>
+    <labl>16</labl>
+  </catgry>
+  <concept vocab="IPUMS">Technical Person Variables -- PERSON</concept>
+  <varFormat schema="other" type="numeric"/>
+</var>
+<var ID="LINENO" dcml="0" files="ExtractData" intrvl="discrete" name="LINENO">
+  <location EndPos="31" StartPos="29" width="3"/>
+  <labl>Person line number</labl>
+  <txt><![CDATA[LINENO identifies each person within a given ATUS respondent household.  It is only available for individuals who were in an ATUS respondent household at the time of the ATUS interview. ATUS respondents always have a LINENO value of 1. 
+
+LINENO_CPS8 is a person identifier that was assigned at the time of the final CPS interview, 2-5 months before the ATUS interview.  Because household composition may have changed between the dates of the CPS and ATUS interviews, LINENO and LINENO_CPS8 may not match. 
+
+PERNUM is an additional person identifier that is available for all person records in the dataset.]]></txt>
+  <catgry>
+    <catValu>001</catValu>
+    <labl>1</labl>
+  </catgry>
+  <catgry>
+    <catValu>002</catValu>
+    <labl>2</labl>
+  </catgry>
+  <catgry>
+    <catValu>003</catValu>
+    <labl>3</labl>
+  </catgry>
+  <catgry>
+    <catValu>004</catValu>
+    <labl>4</labl>
+  </catgry>
+  <catgry>
+    <catValu>005</catValu>
+    <labl>5</labl>
+  </catgry>
+  <catgry>
+    <catValu>006</catValu>
+    <labl>6</labl>
+  </catgry>
+  <catgry>
+    <catValu>007</catValu>
+    <labl>7</labl>
+  </catgry>
+  <catgry>
+    <catValu>008</catValu>
+    <labl>8</labl>
+  </catgry>
+  <catgry>
+    <catValu>009</catValu>
+    <labl>9</labl>
+  </catgry>
+  <catgry>
+    <catValu>010</catValu>
+    <labl>10</labl>
+  </catgry>
+  <catgry>
+    <catValu>011</catValu>
+    <labl>11</labl>
+  </catgry>
+  <catgry>
+    <catValu>012</catValu>
+    <labl>12</labl>
+  </catgry>
+  <catgry>
+    <catValu>013</catValu>
+    <labl>13</labl>
+  </catgry>
+  <catgry>
+    <catValu>014</catValu>
+    <labl>14</labl>
+  </catgry>
+  <catgry>
+    <catValu>015</catValu>
+    <labl>15</labl>
+  </catgry>
+  <catgry>
+    <catValu>016</catValu>
+    <labl>16</labl>
+  </catgry>
+  <catgry>
+    <catValu>017</catValu>
+    <labl>17</labl>
+  </catgry>
+  <catgry>
+    <catValu>018</catValu>
+    <labl>18</labl>
+  </catgry>
+  <catgry>
+    <catValu>019</catValu>
+    <labl>19</labl>
+  </catgry>
+  <catgry>
+    <catValu>999</catValu>
+    <labl>NIU (Not in universe)</labl>
+  </catgry>
+  <concept vocab="IPUMS">Technical Person Variables -- PERSON</concept>
+  <varFormat schema="other" type="numeric"/>
+</var>
+<var ID="WT06" dcml="0" files="ExtractData" intrvl="contin" name="WT06">
+  <location EndPos="48" StartPos="32" width="17"/>
+  <labl>Person weight, 2006 methodology</labl>
+  <txt><![CDATA[WT06 provides ATUS respondent weights based on the weighting methodology introduced in 2006. WT06 is available for all years and is the preferred weighting variable to use for most analyses.  It is the only weighting variable that is suitable for use in analyses that combine time use data from 2006 and later with data for earlier years.  The methodology used to construct WT06 ensures that the sums of the respondent weights add up to the appropriate number of weekday person-days and weekend person-days over the quarter, both for the population as a whole and for selected subpopulations. 
+
+All ATUS weights are probability weights. Users should take care to specify them properly in their statistical packages.
+
+Because the ATUS sample is not a simple random sample, standard errors calculated using the default options in most statistical packages will not be correct.  Calculation of correct standard errors requires the use of replicate weights.  RWT06 may be used in conjunction with WT06 for this purpose; for further details, see the description of RWT06.]]></txt>
+  <codInstr><![CDATA[CodesWT06 is a 16-digit numeric variable reporting the ATUS respondent probability weights. This variable can be used in all years.]]></codInstr>
+  <concept vocab="IPUMS">Weights Variables -- PERSON</concept>
+  <varFormat schema="other" type="numeric"/>
+</var>
+<var ID="WT20" dcml="6" files="ExtractData" intrvl="contin" name="WT20">
+  <location EndPos="63" StartPos="49" width="15"/>
+  <labl>Person weight, 2020 methodology</labl>
+  <txt><![CDATA[WT20 provides ATUS respondent weights compatible with the partial-year 2020 data collection. WT20 does not yield annual estimates. It is designed to provide estimates that are representative of the period from January 1 through March 17 and May 10 through December 31. This weight omits the March 18 to May 9 period because 2020 data were not collected on these days due to the COVID-19 pandemic. This weight is required for analyses that include 2020 data. 
+
+All ATUS weights are probability weights. Users should take care to specify them properly in their statistical packages.
+
+Because the ATUS sample is not a simple random sample, standard errors calculated using the default options in most statistical packages will not be correct.  Calculation of correct standard errors requires the use of replicate weights.  RWT20 may be used in conjunction with WT20 for this purpose; for further details, see the description of RWT20.]]></txt>
+  <codInstr><![CDATA[CodesWT20 is a 15-digit numeric variable reporting the ATUS respondent probability weights.]]></codInstr>
+  <concept vocab="IPUMS">Weights Variables -- PERSON</concept>
+  <varFormat schema="other" type="numeric"/>
+</var>
+<var ID="AGE" dcml="0" files="ExtractData" intrvl="contin" name="AGE">
+  <location EndPos="66" StartPos="64" width="3"/>
+  <labl>Age</labl>
+  <txt><![CDATA[AGE reports the person's age in years as of his/her last birthday.
+
+AGE was collected during the ATUS interview, 2-5 months after the final CPS interview.  Age is also available for the final CPS interview (see AGE_CPS8).
+
+AGE is available for respondents who are aged 15 or over.]]></txt>
+  <codInstr><![CDATA[CodesAge is a 3 digit numeric variable reporting the person's age in years. This variable ranges from 0 to 85 except for 81 - 84 (see top codes).  
+
+996 = Refused to answer
+997 = Don't know
+999 = NIU (Not in universe)
+
+		
+Top codes:2003-2004:  80 years.
+2005 onward:  85 years.  Persons aged 80-84 are assigned a code of 80 and persons age 85+ are assigned a code of 85.]]></codInstr>
+  <concept vocab="IPUMS">Core Demographic Variables -- PERSON</concept>
+  <varFormat schema="other" type="numeric"/>
+</var>
+<var ID="SEX" dcml="0" files="ExtractData" intrvl="discrete" name="SEX">
+  <location EndPos="68" StartPos="67" width="2"/>
+  <labl>Sex</labl>
+  <txt><![CDATA[SEX reports whether the individual is male or female.
+
+SEX was collected at the time of the ATUS interview.  SEX_CPS8 was also collected at the time of the final CPS interview, 2-5 months before the ATUS interview.]]></txt>
+  <catgry>
+    <catValu>01</catValu>
+    <labl>Male</labl>
+  </catgry>
+  <catgry>
+    <catValu>02</catValu>
+    <labl>Female</labl>
+  </catgry>
+  <catgry>
+    <catValu>99</catValu>
+    <labl>NIU (Not in universe)</labl>
+  </catgry>
+  <concept vocab="IPUMS">Core Demographic Variables -- PERSON</concept>
+  <varFormat schema="other" type="numeric"/>
+</var>
+<var ID="EDUC" dcml="0" files="ExtractData" intrvl="discrete" name="EDUC">
+  <location EndPos="71" StartPos="69" width="3"/>
+  <labl>Highest level of school completed</labl>
+  <txt><![CDATA[EDUC reports the respondent's highest completed level of education.
+
+EDUCYRS reports the number of years the respondent spent in educational programs.
+
+EDUC was drawn from the final CPS interview, conducted 2-5 months before the ATUS interview. Education was not updated at the time of the ATUS interview.]]></txt>
+  <catgry>
+    <catValu>010</catValu>
+    <labl>Less than 1st grade</labl>
+  </catgry>
+  <catgry>
+    <catValu>011</catValu>
+    <labl>1st, 2nd, 3rd, or 4th grade</labl>
+  </catgry>
+  <catgry>
+    <catValu>012</catValu>
+    <labl>5th or 6th grade</labl>
+  </catgry>
+  <catgry>
+    <catValu>013</catValu>
+    <labl>7th or 8th grade</labl>
+  </catgry>
+  <catgry>
+    <catValu>014</catValu>
+    <labl>9th grade</labl>
+  </catgry>
+  <catgry>
+    <catValu>015</catValu>
+    <labl>10th grade</labl>
+  </catgry>
+  <catgry>
+    <catValu>016</catValu>
+    <labl>11th grade</labl>
+  </catgry>
+  <catgry>
+    <catValu>017</catValu>
+    <labl>12th grade - no diploma</labl>
+  </catgry>
+  <catgry>
+    <catValu>020</catValu>
+    <labl>High school graduate - GED</labl>
+  </catgry>
+  <catgry>
+    <catValu>021</catValu>
+    <labl>High school graduate - diploma</labl>
+  </catgry>
+  <catgry>
+    <catValu>030</catValu>
+    <labl>Some college but no degree</labl>
+  </catgry>
+  <catgry>
+    <catValu>031</catValu>
+    <labl>Associate degree - occupational vocational</labl>
+  </catgry>
+  <catgry>
+    <catValu>032</catValu>
+    <labl>Associate degree - academic program</labl>
+  </catgry>
+  <catgry>
+    <catValu>040</catValu>
+    <labl>Bachelor's degree (BA, AB, BS, etc.)</labl>
+  </catgry>
+  <catgry>
+    <catValu>041</catValu>
+    <labl>Master's degree (MA, MS, MEng, MEd, MSW, etc.)</labl>
+  </catgry>
+  <catgry>
+    <catValu>042</catValu>
+    <labl>Professional school degree (MD, DDS, DVM, etc.)</labl>
+  </catgry>
+  <catgry>
+    <catValu>043</catValu>
+    <labl>Doctoral degree (PhD, EdD, etc.)</labl>
+  </catgry>
+  <catgry>
+    <catValu>999</catValu>
+    <labl>NIU (Not in universe)</labl>
+  </catgry>
+  <concept vocab="IPUMS">Education Variables -- PERSON</concept>
+  <varFormat schema="other" type="numeric"/>
+</var>
+<var ID="EDUCYRS" dcml="0" files="ExtractData" intrvl="discrete" name="EDUCYRS">
+  <location EndPos="74" StartPos="72" width="3"/>
+  <labl>Years of education</labl>
+  <txt><![CDATA[EDUCYRS reports the respondent's years of education.
+
+EDUC reports the highest level the respondent has completed.  As degrees can take varying amounts of time to complete, EDUCYRS was created from a series of questions that assess the amount of time spent in various educational programs. 
+
+The following categories include people with the following types of education:
+
+Twelfth grade: Respondents who report a twelfth grade education are assigned a value of 112.  Respondents who receive a high school diploma are also included in this category, as are respondents who complete less than one year of college, including respondents who receive an associate's degree after less than one year of college.
+
+College--four years: Respondents who report having completed four years of college credit are assigned a value of 216, as are respondents (in the CPS prior to 2015) who have a bachelor's degree but no post-graduate education.
+
+College degree: Respondents who completed their rotation in the CPS in 2015 or later and who report having completed a bachelor's degree but no post-graduate education.
+
+Master's degree: Respondents who completed their rotation in the CPS in 2015 or later and who report having completed a master's degree.
+
+Master's degree--one year program: Respondents who report receiving a master's degree in a one-year program, or who report earning 1-6 graduate or professional course credits are assigned a value of 317.
+
+Master's degree--two year program: Respondents who report receiving a master's degree in a two-year program, or who report earning more than six graduate or professional course credits are assigned a value of 318.
+
+Master's degree--three year program: Respondents who report receiving a master's degree in a three-year program are assigned a value of 319.
+EDUCYRS along with other information on education was drawn from the final CPS interview, conducted 2-5 months before the ATUS interview. Education was not updated at the time of the ATUS interview.]]></txt>
+  <catgry>
+    <catValu>100</catValu>
+    <labl>Grades 1-12</labl>
+  </catgry>
+  <catgry>
+    <catValu>101</catValu>
+    <labl>Less than first grade</labl>
+  </catgry>
+  <catgry>
+    <catValu>102</catValu>
+    <labl>First through fourth grade</labl>
+  </catgry>
+  <catgry>
+    <catValu>105</catValu>
+    <labl>Fifth through sixth grade</labl>
+  </catgry>
+  <catgry>
+    <catValu>107</catValu>
+    <labl>Seventh through eighth grade</labl>
+  </catgry>
+  <catgry>
+    <catValu>109</catValu>
+    <labl>Ninth grade</labl>
+  </catgry>
+  <catgry>
+    <catValu>110</catValu>
+    <labl>Tenth grade</labl>
+  </catgry>
+  <catgry>
+    <catValu>111</catValu>
+    <labl>Eleventh grade</labl>
+  </catgry>
+  <catgry>
+    <catValu>112</catValu>
+    <labl>Twelfth grade</labl>
+  </catgry>
+  <catgry>
+    <catValu>200</catValu>
+    <labl>College</labl>
+  </catgry>
+  <catgry>
+    <catValu>213</catValu>
+    <labl>College--one year</labl>
+  </catgry>
+  <catgry>
+    <catValu>214</catValu>
+    <labl>College--two years</labl>
+  </catgry>
+  <catgry>
+    <catValu>215</catValu>
+    <labl>College--three years</labl>
+  </catgry>
+  <catgry>
+    <catValu>216</catValu>
+    <labl>College--four years</labl>
+  </catgry>
+  <catgry>
+    <catValu>217</catValu>
+    <labl>Bachelor's degree</labl>
+  </catgry>
+  <catgry>
+    <catValu>300</catValu>
+    <labl>Advanced degree</labl>
+  </catgry>
+  <catgry>
+    <catValu>316</catValu>
+    <labl>Master's degree</labl>
+  </catgry>
+  <catgry>
+    <catValu>317</catValu>
+    <labl>Master's degree--one year program</labl>
+  </catgry>
+  <catgry>
+    <catValu>318</catValu>
+    <labl>Master's degree--two year program</labl>
+  </catgry>
+  <catgry>
+    <catValu>319</catValu>
+    <labl>Master's degree--three+ year program</labl>
+  </catgry>
+  <catgry>
+    <catValu>320</catValu>
+    <labl>Professional degree</labl>
+  </catgry>
+  <catgry>
+    <catValu>321</catValu>
+    <labl>Doctoral degree</labl>
+  </catgry>
+  <catgry>
+    <catValu>999</catValu>
+    <labl>NIU (Not in universe)</labl>
+  </catgry>
+  <concept vocab="IPUMS">Education Variables -- PERSON</concept>
+  <varFormat schema="other" type="numeric"/>
+</var>
+<var ID="SPOUSEPRES" dcml="0" files="ExtractData" intrvl="discrete" name="SPOUSEPRES">
+  <location EndPos="76" StartPos="75" width="2"/>
+  <labl>Spouse or unmarried partner in household</labl>
+  <txt><![CDATA[SPOUSEPRES reports whether the ATUS respondent has a spouse or unmarried partner living in the household.
+
+SPOUSEPRES was collected at the time of the ATUS interview.]]></txt>
+  <catgry>
+    <catValu>01</catValu>
+    <labl>Spouse present</labl>
+  </catgry>
+  <catgry>
+    <catValu>02</catValu>
+    <labl>Unmarried partner present</labl>
+  </catgry>
+  <catgry>
+    <catValu>03</catValu>
+    <labl>No spouse or unmarried partner present</labl>
+  </catgry>
+  <catgry>
+    <catValu>99</catValu>
+    <labl>NIU (Not in universe)</labl>
+  </catgry>
+  <concept vocab="IPUMS">Spouse Characteristic Variables -- PERSON</concept>
+  <varFormat schema="other" type="numeric"/>
+</var>
+<var ID="SPUSUALHRS" dcml="0" files="ExtractData" intrvl="discrete" name="SPUSUALHRS">
+  <location EndPos="79" StartPos="77" width="3"/>
+  <labl>Usual work hours (spouse or partner)</labl>
+  <txt><![CDATA[SPUSUALHRS reports the number of hours the respondent's spouse or unmarried partner usually works per week.
+
+SPUSUALHRS was collected at the time of the ATUS interview.]]></txt>
+  <catgry>
+    <catValu>000</catValu>
+    <labl>0</labl>
+  </catgry>
+  <catgry>
+    <catValu>001</catValu>
+    <labl>1</labl>
+  </catgry>
+  <catgry>
+    <catValu>002</catValu>
+    <labl>2</labl>
+  </catgry>
+  <catgry>
+    <catValu>003</catValu>
+    <labl>3</labl>
+  </catgry>
+  <catgry>
+    <catValu>004</catValu>
+    <labl>4</labl>
+  </catgry>
+  <catgry>
+    <catValu>005</catValu>
+    <labl>5</labl>
+  </catgry>
+  <catgry>
+    <catValu>006</catValu>
+    <labl>6</labl>
+  </catgry>
+  <catgry>
+    <catValu>007</catValu>
+    <labl>7</labl>
+  </catgry>
+  <catgry>
+    <catValu>008</catValu>
+    <labl>8</labl>
+  </catgry>
+  <catgry>
+    <catValu>009</catValu>
+    <labl>9</labl>
+  </catgry>
+  <catgry>
+    <catValu>010</catValu>
+    <labl>10</labl>
+  </catgry>
+  <catgry>
+    <catValu>011</catValu>
+    <labl>11</labl>
+  </catgry>
+  <catgry>
+    <catValu>012</catValu>
+    <labl>12</labl>
+  </catgry>
+  <catgry>
+    <catValu>013</catValu>
+    <labl>13</labl>
+  </catgry>
+  <catgry>
+    <catValu>014</catValu>
+    <labl>14</labl>
+  </catgry>
+  <catgry>
+    <catValu>015</catValu>
+    <labl>15</labl>
+  </catgry>
+  <catgry>
+    <catValu>016</catValu>
+    <labl>16</labl>
+  </catgry>
+  <catgry>
+    <catValu>017</catValu>
+    <labl>17</labl>
+  </catgry>
+  <catgry>
+    <catValu>018</catValu>
+    <labl>18</labl>
+  </catgry>
+  <catgry>
+    <catValu>019</catValu>
+    <labl>19</labl>
+  </catgry>
+  <catgry>
+    <catValu>020</catValu>
+    <labl>20</labl>
+  </catgry>
+  <catgry>
+    <catValu>021</catValu>
+    <labl>21</labl>
+  </catgry>
+  <catgry>
+    <catValu>022</catValu>
+    <labl>22</labl>
+  </catgry>
+  <catgry>
+    <catValu>023</catValu>
+    <labl>23</labl>
+  </catgry>
+  <catgry>
+    <catValu>024</catValu>
+    <labl>24</labl>
+  </catgry>
+  <catgry>
+    <catValu>025</catValu>
+    <labl>25</labl>
+  </catgry>
+  <catgry>
+    <catValu>026</catValu>
+    <labl>26</labl>
+  </catgry>
+  <catgry>
+    <catValu>027</catValu>
+    <labl>27</labl>
+  </catgry>
+  <catgry>
+    <catValu>028</catValu>
+    <labl>28</labl>
+  </catgry>
+  <catgry>
+    <catValu>029</catValu>
+    <labl>29</labl>
+  </catgry>
+  <catgry>
+    <catValu>030</catValu>
+    <labl>30</labl>
+  </catgry>
+  <catgry>
+    <catValu>031</catValu>
+    <labl>31</labl>
+  </catgry>
+  <catgry>
+    <catValu>032</catValu>
+    <labl>32</labl>
+  </catgry>
+  <catgry>
+    <catValu>033</catValu>
+    <labl>33</labl>
+  </catgry>
+  <catgry>
+    <catValu>034</catValu>
+    <labl>34</labl>
+  </catgry>
+  <catgry>
+    <catValu>035</catValu>
+    <labl>35</labl>
+  </catgry>
+  <catgry>
+    <catValu>036</catValu>
+    <labl>36</labl>
+  </catgry>
+  <catgry>
+    <catValu>037</catValu>
+    <labl>37</labl>
+  </catgry>
+  <catgry>
+    <catValu>038</catValu>
+    <labl>38</labl>
+  </catgry>
+  <catgry>
+    <catValu>039</catValu>
+    <labl>39</labl>
+  </catgry>
+  <catgry>
+    <catValu>040</catValu>
+    <labl>40</labl>
+  </catgry>
+  <catgry>
+    <catValu>041</catValu>
+    <labl>41</labl>
+  </catgry>
+  <catgry>
+    <catValu>042</catValu>
+    <labl>42</labl>
+  </catgry>
+  <catgry>
+    <catValu>043</catValu>
+    <labl>43</labl>
+  </catgry>
+  <catgry>
+    <catValu>044</catValu>
+    <labl>44</labl>
+  </catgry>
+  <catgry>
+    <catValu>045</catValu>
+    <labl>45</labl>
+  </catgry>
+  <catgry>
+    <catValu>046</catValu>
+    <labl>46</labl>
+  </catgry>
+  <catgry>
+    <catValu>047</catValu>
+    <labl>47</labl>
+  </catgry>
+  <catgry>
+    <catValu>048</catValu>
+    <labl>48</labl>
+  </catgry>
+  <catgry>
+    <catValu>049</catValu>
+    <labl>49</labl>
+  </catgry>
+  <catgry>
+    <catValu>050</catValu>
+    <labl>50</labl>
+  </catgry>
+  <catgry>
+    <catValu>051</catValu>
+    <labl>51</labl>
+  </catgry>
+  <catgry>
+    <catValu>052</catValu>
+    <labl>52</labl>
+  </catgry>
+  <catgry>
+    <catValu>053</catValu>
+    <labl>53</labl>
+  </catgry>
+  <catgry>
+    <catValu>054</catValu>
+    <labl>54</labl>
+  </catgry>
+  <catgry>
+    <catValu>055</catValu>
+    <labl>55</labl>
+  </catgry>
+  <catgry>
+    <catValu>056</catValu>
+    <labl>56</labl>
+  </catgry>
+  <catgry>
+    <catValu>057</catValu>
+    <labl>57</labl>
+  </catgry>
+  <catgry>
+    <catValu>058</catValu>
+    <labl>58</labl>
+  </catgry>
+  <catgry>
+    <catValu>059</catValu>
+    <labl>59</labl>
+  </catgry>
+  <catgry>
+    <catValu>060</catValu>
+    <labl>60</labl>
+  </catgry>
+  <catgry>
+    <catValu>061</catValu>
+    <labl>61</labl>
+  </catgry>
+  <catgry>
+    <catValu>062</catValu>
+    <labl>62</labl>
+  </catgry>
+  <catgry>
+    <catValu>063</catValu>
+    <labl>63</labl>
+  </catgry>
+  <catgry>
+    <catValu>064</catValu>
+    <labl>64</labl>
+  </catgry>
+  <catgry>
+    <catValu>065</catValu>
+    <labl>65</labl>
+  </catgry>
+  <catgry>
+    <catValu>066</catValu>
+    <labl>66</labl>
+  </catgry>
+  <catgry>
+    <catValu>067</catValu>
+    <labl>67</labl>
+  </catgry>
+  <catgry>
+    <catValu>068</catValu>
+    <labl>68</labl>
+  </catgry>
+  <catgry>
+    <catValu>069</catValu>
+    <labl>69</labl>
+  </catgry>
+  <catgry>
+    <catValu>070</catValu>
+    <labl>70</labl>
+  </catgry>
+  <catgry>
+    <catValu>071</catValu>
+    <labl>71</labl>
+  </catgry>
+  <catgry>
+    <catValu>072</catValu>
+    <labl>72</labl>
+  </catgry>
+  <catgry>
+    <catValu>073</catValu>
+    <labl>73</labl>
+  </catgry>
+  <catgry>
+    <catValu>074</catValu>
+    <labl>74</labl>
+  </catgry>
+  <catgry>
+    <catValu>075</catValu>
+    <labl>75</labl>
+  </catgry>
+  <catgry>
+    <catValu>076</catValu>
+    <labl>76</labl>
+  </catgry>
+  <catgry>
+    <catValu>077</catValu>
+    <labl>77</labl>
+  </catgry>
+  <catgry>
+    <catValu>078</catValu>
+    <labl>78</labl>
+  </catgry>
+  <catgry>
+    <catValu>079</catValu>
+    <labl>79</labl>
+  </catgry>
+  <catgry>
+    <catValu>080</catValu>
+    <labl>80</labl>
+  </catgry>
+  <catgry>
+    <catValu>081</catValu>
+    <labl>81</labl>
+  </catgry>
+  <catgry>
+    <catValu>082</catValu>
+    <labl>82</labl>
+  </catgry>
+  <catgry>
+    <catValu>083</catValu>
+    <labl>83</labl>
+  </catgry>
+  <catgry>
+    <catValu>084</catValu>
+    <labl>84</labl>
+  </catgry>
+  <catgry>
+    <catValu>085</catValu>
+    <labl>85</labl>
+  </catgry>
+  <catgry>
+    <catValu>086</catValu>
+    <labl>86</labl>
+  </catgry>
+  <catgry>
+    <catValu>087</catValu>
+    <labl>87</labl>
+  </catgry>
+  <catgry>
+    <catValu>088</catValu>
+    <labl>88</labl>
+  </catgry>
+  <catgry>
+    <catValu>089</catValu>
+    <labl>89</labl>
+  </catgry>
+  <catgry>
+    <catValu>090</catValu>
+    <labl>90</labl>
+  </catgry>
+  <catgry>
+    <catValu>091</catValu>
+    <labl>91</labl>
+  </catgry>
+  <catgry>
+    <catValu>092</catValu>
+    <labl>92</labl>
+  </catgry>
+  <catgry>
+    <catValu>093</catValu>
+    <labl>93</labl>
+  </catgry>
+  <catgry>
+    <catValu>094</catValu>
+    <labl>94</labl>
+  </catgry>
+  <catgry>
+    <catValu>095</catValu>
+    <labl>95</labl>
+  </catgry>
+  <catgry>
+    <catValu>096</catValu>
+    <labl>96</labl>
+  </catgry>
+  <catgry>
+    <catValu>097</catValu>
+    <labl>97</labl>
+  </catgry>
+  <catgry>
+    <catValu>098</catValu>
+    <labl>98</labl>
+  </catgry>
+  <catgry>
+    <catValu>099</catValu>
+    <labl>99</labl>
+  </catgry>
+  <catgry>
+    <catValu>995</catValu>
+    <labl>Hours vary</labl>
+  </catgry>
+  <catgry>
+    <catValu>999</catValu>
+    <labl>NIU (Not in universe)</labl>
+  </catgry>
+  <concept vocab="IPUMS">Spouse Characteristic Variables -- PERSON</concept>
+  <varFormat schema="other" type="numeric"/>
+</var>
+<var ID="SPEARNWEEK" dcml="2" files="ExtractData" intrvl="contin" name="SPEARNWEEK">
+  <location EndPos="86" StartPos="80" width="7"/>
+  <labl>Weekly earnings (spouse or partner)</labl>
+  <txt><![CDATA[SPEARNWEEK reports the usual weekly earnings of the respondent's spouse or unmarried partner in dollars.
+
+Weekly earnings (EARNWEEK) are reported at the time of the final CPS interview, 2-5 months before the ATUS interview.  Spouse's earnings are not updated at the time of the ATUS interview, though spouse's employment status (SPEMPNOT) is. Therefore, respondents whose spouse or unmarried partner was not in the household at the time of the CPS interview have a value of 99999.98 for SPEARNWEEK because information on spouse's earnings is not available.]]></txt>
+  <codInstr><![CDATA[CodesSPEARNWEEK is a 7-digit numeric variable reported in dollars at 2 decimal places. 
+99999.98 = Blank
+99999.99 = NIU (Not in Universe) 
+
+		
+Codes		
+Top codes:2003+: Usual weekly earnings of the respondent's spouse or unmarried partner greater than or equal to $2884.61 are assigned a value of $2884.61.]]></codInstr>
+  <concept vocab="IPUMS">Spouse Characteristic Variables -- PERSON</concept>
+  <varFormat schema="other" type="numeric"/>
+</var>
+<var ID="QSPUSUALHRS" dcml="0" files="ExtractData" intrvl="discrete" name="QSPUSUALHRS">
+  <location EndPos="89" StartPos="87" width="3"/>
+  <labl>SPUSUALHRS: allocation flag</labl>
+  <txt><![CDATA[SPUSUALHRS: allocation flag.]]></txt>
+  <catgry>
+    <catValu>000</catValu>
+    <labl>Value - no change</labl>
+  </catgry>
+  <catgry>
+    <catValu>011</catValu>
+    <labl>Blank to value</labl>
+  </catgry>
+  <catgry>
+    <catValu>998</catValu>
+    <labl>Blank</labl>
+  </catgry>
+  <catgry>
+    <catValu>999</catValu>
+    <labl>NIU (Not in universe)</labl>
+  </catgry>
+  <concept vocab="IPUMS">Imputation Flags Variables -- PERSON</concept>
+  <varFormat schema="other" type="numeric"/>
+  <notes>This variable functions as a data quality flag.</notes>
+</var>
+<var ID="QEDUC" dcml="0" files="ExtractData" intrvl="discrete" name="QEDUC">
+  <location EndPos="92" StartPos="90" width="3"/>
+  <labl>EDUC: allocation flag</labl>
+  <txt><![CDATA[EDUC: allocation flag.]]></txt>
+  <catgry>
+    <catValu>000</catValu>
+    <labl>Value - no change</labl>
+  </catgry>
+  <catgry>
+    <catValu>001</catValu>
+    <labl>Blank - no change</labl>
+  </catgry>
+  <catgry>
+    <catValu>021</catValu>
+    <labl>Blank to longitudinal value</labl>
+  </catgry>
+  <catgry>
+    <catValu>022</catValu>
+    <labl>Don't know to longitudinal value</labl>
+  </catgry>
+  <catgry>
+    <catValu>023</catValu>
+    <labl>Refused to longitudinal value</labl>
+  </catgry>
+  <catgry>
+    <catValu>041</catValu>
+    <labl>Blank to allocated value</labl>
+  </catgry>
+  <catgry>
+    <catValu>042</catValu>
+    <labl>Don't know to allocated value</labl>
+  </catgry>
+  <catgry>
+    <catValu>043</catValu>
+    <labl>Refused to allocated value</labl>
+  </catgry>
+  <catgry>
+    <catValu>050</catValu>
+    <labl>Value to blank</labl>
+  </catgry>
+  <catgry>
+    <catValu>052</catValu>
+    <labl>Don't know to blank</labl>
+  </catgry>
+  <catgry>
+    <catValu>053</catValu>
+    <labl>Refused to blank</labl>
+  </catgry>
+  <catgry>
+    <catValu>999</catValu>
+    <labl>NIU (Not in universe)</labl>
+  </catgry>
+  <concept vocab="IPUMS">Imputation Flags Variables -- PERSON</concept>
+  <varFormat schema="other" type="numeric"/>
+  <notes>This variable functions as a data quality flag.</notes>
+</var>
+<var ID="QAGE" dcml="0" files="ExtractData" intrvl="discrete" name="QAGE">
+  <location EndPos="95" StartPos="93" width="3"/>
+  <labl>AGE: allocation flag</labl>
+  <txt><![CDATA[AGE: allocation flag.]]></txt>
+  <catgry>
+    <catValu>000</catValu>
+    <labl>Value - no change</labl>
+  </catgry>
+  <catgry>
+    <catValu>002</catValu>
+    <labl>Don't know - no change</labl>
+  </catgry>
+  <catgry>
+    <catValu>003</catValu>
+    <labl>Refused - no change</labl>
+  </catgry>
+  <catgry>
+    <catValu>011</catValu>
+    <labl>Blank to value</labl>
+  </catgry>
+  <catgry>
+    <catValu>020</catValu>
+    <labl>Value to longitudinal value</labl>
+  </catgry>
+  <catgry>
+    <catValu>021</catValu>
+    <labl>Blank to longitudinal value</labl>
+  </catgry>
+  <catgry>
+    <catValu>022</catValu>
+    <labl>Don't know to longitudinal value</labl>
+  </catgry>
+  <catgry>
+    <catValu>023</catValu>
+    <labl>Refused to longitudinal value</labl>
+  </catgry>
+  <catgry>
+    <catValu>041</catValu>
+    <labl>Blank to allocated value</labl>
+  </catgry>
+  <catgry>
+    <catValu>042</catValu>
+    <labl>Don't know to allocated value</labl>
+  </catgry>
+  <catgry>
+    <catValu>043</catValu>
+    <labl>Refused to allocated value</labl>
+  </catgry>
+  <catgry>
+    <catValu>060</catValu>
+    <labl>Topcoded</labl>
+  </catgry>
+  <catgry>
+    <catValu>999</catValu>
+    <labl>NIU (Not in universe)</labl>
+  </catgry>
+  <concept vocab="IPUMS">Imputation Flags Variables -- PERSON</concept>
+  <varFormat schema="other" type="numeric"/>
+  <notes>This variable functions as a data quality flag.</notes>
+</var>
+<var ID="QSEX" dcml="0" files="ExtractData" intrvl="discrete" name="QSEX">
+  <location EndPos="98" StartPos="96" width="3"/>
+  <labl>SEX: allocation flag</labl>
+  <txt><![CDATA[SEX: allocation flag.]]></txt>
+  <catgry>
+    <catValu>000</catValu>
+    <labl>Value - no change</labl>
+  </catgry>
+  <catgry>
+    <catValu>001</catValu>
+    <labl>Blank - no change</labl>
+  </catgry>
+  <catgry>
+    <catValu>002</catValu>
+    <labl>Don't know - no change</labl>
+  </catgry>
+  <catgry>
+    <catValu>011</catValu>
+    <labl>Blank to value</labl>
+  </catgry>
+  <catgry>
+    <catValu>012</catValu>
+    <labl>Don't know to value</labl>
+  </catgry>
+  <catgry>
+    <catValu>013</catValu>
+    <labl>Refused to value</labl>
+  </catgry>
+  <catgry>
+    <catValu>022</catValu>
+    <labl>Don't know to longitudinal value</labl>
+  </catgry>
+  <catgry>
+    <catValu>023</catValu>
+    <labl>Refused to longitudinal value</labl>
+  </catgry>
+  <catgry>
+    <catValu>041</catValu>
+    <labl>Blank To Allocated Value</labl>
+  </catgry>
+  <catgry>
+    <catValu>042</catValu>
+    <labl>Don't Know To Allocated Value</labl>
+  </catgry>
+  <catgry>
+    <catValu>043</catValu>
+    <labl>Refused To Allocated Value</labl>
+  </catgry>
+  <catgry>
+    <catValu>050</catValu>
+    <labl>Value To Blank</labl>
+  </catgry>
+  <catgry>
+    <catValu>052</catValu>
+    <labl>Don’t know to blank</labl>
+  </catgry>
+  <catgry>
+    <catValu>053</catValu>
+    <labl>Refused to blank</labl>
+  </catgry>
+  <catgry>
+    <catValu>998</catValu>
+    <labl>Blank</labl>
+  </catgry>
+  <catgry>
+    <catValu>999</catValu>
+    <labl>NIU (Not in universe)</labl>
+  </catgry>
+  <concept vocab="IPUMS">Imputation Flags Variables -- PERSON</concept>
+  <varFormat schema="other" type="numeric"/>
+  <notes>This variable functions as a data quality flag.</notes>
+</var>
+<var ID="QEDUCYRS" dcml="0" files="ExtractData" intrvl="discrete" name="QEDUCYRS">
+  <location EndPos="100" StartPos="99" width="2"/>
+  <labl>EDUCYRS: allocation flag</labl>
+  <txt><![CDATA[EDUCYRS: allocation flag.
+
+EDUCYRS was constructed from seven original variables.  QEDUCYRS reports if any of those seven original variables were allocated.]]></txt>
+  <catgry>
+    <catValu>00</catValu>
+    <labl>Not allocated</labl>
+  </catgry>
+  <catgry>
+    <catValu>01</catValu>
+    <labl>Allocated</labl>
+  </catgry>
+  <catgry>
+    <catValu>99</catValu>
+    <labl>NIU (Not in universe)</labl>
+  </catgry>
+  <concept vocab="IPUMS">Imputation Flags Variables -- PERSON</concept>
+  <varFormat schema="other" type="numeric"/>
+  <notes>This variable functions as a data quality flag.</notes>
+</var>
+  <var ID="ACT_CAREHH" dcml="0" files="ExtractData" intrvl="contin" name="ACT_CAREHH">
+    <location EndPos="104" StartPos="101" width="4"/>
+    <labl>ACT: Caring for and helping household members</labl>
+    <txt><![CDATA[This variable indicates the minutes per day each respondent reported spending in caring for or helping any child or adult in the respondent's household, regardless of relationship, age, or physical or mental health status.]]></txt>
+    <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
+    <concept vocab="IPUMS">Time Use Variables -- PERSON</concept>
+    <varFormat schema="other" type="numeric"/>
+  </var>
+  <var ID="ACT_EDUC" dcml="0" files="ExtractData" intrvl="contin" name="ACT_EDUC">
+    <location EndPos="108" StartPos="105" width="4"/>
+    <labl>ACT: Educational activities</labl>
+    <txt><![CDATA[This variable indicates the minutes per day each respondent reported spending in non-work education activities, such as taking classes, conducting research and homework, administrative tasks, and extracurricular activities except sports.]]></txt>
+    <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
+    <concept vocab="IPUMS">Time Use Variables -- PERSON</concept>
+    <varFormat schema="other" type="numeric"/>
+  </var>
+  <var ID="ACT_FOOD" dcml="0" files="ExtractData" intrvl="contin" name="ACT_FOOD">
+    <location EndPos="112" StartPos="109" width="4"/>
+    <labl>ACT: Eat and drinking</labl>
+    <txt><![CDATA[This variable indicates the minutes per day each respondent reported spending in activities such as eating and drinking not done as work or a volunteer activity, whether the respondent was alone, with others, at home, at a place of purchase, in transit, or somewhere else.]]></txt>
+    <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
+    <concept vocab="IPUMS">Time Use Variables -- PERSON</concept>
+    <varFormat schema="other" type="numeric"/>
+  </var>
+  <var ID="ACT_HHACT" dcml="0" files="ExtractData" intrvl="contin" name="ACT_HHACT">
+    <location EndPos="116" StartPos="113" width="4"/>
+    <labl>ACT: Household activities</labl>
+    <txt><![CDATA[This variable indicates the minutes per day each respondent reported spending in household activities such as maintaining their household, household management and organizational activities.]]></txt>
+    <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
+    <concept vocab="IPUMS">Time Use Variables -- PERSON</concept>
+    <varFormat schema="other" type="numeric"/>
+  </var>
+  <var ID="ACT_HHSERV" dcml="0" files="ExtractData" intrvl="contin" name="ACT_HHSERV">
+    <location EndPos="120" StartPos="117" width="4"/>
+    <labl>ACT: Household services</labl>
+    <txt><![CDATA[This variable indicates the minutes per day each respondent reported spending in activities such as obtaining and purchasing household services provided by someone else. Household services include yard and house cleaning, cooking, pet care, tailoring and laundering services, and vehicle and home repairs, maintenance, and construction. Watching someone else perform paid household activities (cooking, cleaning, repairing, etc.) should be coded here, provided "watching" was the respondent's primary activity.]]></txt>
+    <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
+    <concept vocab="IPUMS">Time Use Variables -- PERSON</concept>
+    <varFormat schema="other" type="numeric"/>
+  </var>
+  <var ID="ACT_PCARE_NONSLEEP" dcml="0" files="ExtractData" intrvl="contin" name="ACT_PCARE_NONSLEEP">
+    <location EndPos="124" StartPos="121" width="4"/>
+    <labl>ACT_PCARE Non-Sleep Variables</labl>
+    <txt><![CDATA[]]></txt>
+    <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
+    <concept vocab="IPUMS">Time Use Variables -- PERSON</concept>
+    <varFormat schema="other" type="numeric"/>
+  </var>
+  <var ID="ACT_PCARE_SLEEP_010101" dcml="0" files="ExtractData" intrvl="contin" name="ACT_PCARE_SLEEP_010101">
+    <location EndPos="128" StartPos="125" width="4"/>
+    <labl>ACT: Personal care Sleeping</labl>
+    <txt><![CDATA[]]></txt>
+    <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
+    <concept vocab="IPUMS">Time Use Variables -- PERSON</concept>
+    <varFormat schema="other" type="numeric"/>
+  </var>
+  <var ID="ACT_PCARE_SLEEP_010102" dcml="0" files="ExtractData" intrvl="contin" name="ACT_PCARE_SLEEP_010102">
+    <location EndPos="132" StartPos="129" width="4"/>
+    <labl>ACT: Personal care Sleeplessness</labl>
+    <txt><![CDATA[]]></txt>
+    <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
+    <concept vocab="IPUMS">Time Use Variables -- PERSON</concept>
+    <varFormat schema="other" type="numeric"/>
+  </var>
+  <var ID="ACT_PCARE_SLEEP_010199" dcml="0" files="ExtractData" intrvl="contin" name="ACT_PCARE_SLEEP_010199">
+    <location EndPos="136" StartPos="133" width="4"/>
+    <labl> ACT: Personal care Sleeping n.e.c.</labl>
+    <txt><![CDATA[]]></txt>
+    <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
+    <concept vocab="IPUMS">Time Use Variables -- PERSON</concept>
+    <varFormat schema="other" type="numeric"/>
+  </var>
+  <var ID="ACT_PROFSERV" dcml="0" files="ExtractData" intrvl="contin" name="ACT_PROFSERV">
+    <location EndPos="140" StartPos="137" width="4"/>
+    <labl>ACT: Professional and personal care services</labl>
+    <txt><![CDATA[This variable indicates the minutes per day each respondent reported spending in activities such as obtaining, receiving, and/or purchasing professional and personal care services provided by someone else. Professional services include child care, financial, legal, medical and other adult care, real estate, and veterinary. Personal care service activities include massages, haircuts, manicures, and tanning at salons.]]></txt>
+    <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
+    <concept vocab="IPUMS">Time Use Variables -- PERSON</concept>
+    <varFormat schema="other" type="numeric"/>
+  </var>
+  <var ID="ACT_PURCH" dcml="0" files="ExtractData" intrvl="contin" name="ACT_PURCH">
+    <location EndPos="144" StartPos="141" width="4"/>
+    <labl>ACT: Consumer purchases</labl>
+    <txt><![CDATA[This variable indicates the minutes per day each respondent reported spending in activities such as purchases and rentals of consumer goods, regardless of mode or place of purchase or rental (in person, via telephone, over the internet, at home, or in a store).]]></txt>
+    <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
+    <concept vocab="IPUMS">Time Use Variables -- PERSON</concept>
+    <varFormat schema="other" type="numeric"/>
+  </var>
+  <var ID="ACT_RELIG" dcml="0" files="ExtractData" intrvl="contin" name="ACT_RELIG">
+    <location EndPos="148" StartPos="145" width="4"/>
+    <labl>ACT: Religious and spiritual activities</labl>
+    <txt><![CDATA[This variable indicates the minutes per day each respondent reported spending in religious activities such as attending regular and special religious services and participating in other religion-related activities, such as church choirs, youth groups, orchestras, or unpaid teaching (unless identified as volunteer activities). This category also includes personal religious practices, such as praying, and personal spiritual practices not necessarily affiliated with formal religion.]]></txt>
+    <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
+    <concept vocab="IPUMS">Time Use Variables -- PERSON</concept>
+    <varFormat schema="other" type="numeric"/>
+  </var>
+  <var ID="ACT_SOCIAL" dcml="0" files="ExtractData" intrvl="contin" name="ACT_SOCIAL">
+    <location EndPos="152" StartPos="149" width="4"/>
+    <labl>ACT: Socializing, relaxing, and leisure</labl>
+    <txt><![CDATA[This variable indicates the minutes per day each respondent reported spending in personal interest or leisure activities such as communicating with others and attending parties and meetings; and leisure activities such as relaxing, playing (passive) games (unless playing with children only), watching television, playing or listening to music, reading, writing, and all hobbies.]]></txt>
+    <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
+    <concept vocab="IPUMS">Time Use Variables -- PERSON</concept>
+    <varFormat schema="other" type="numeric"/>
+  </var>
+  <var ID="ACT_SPORTS" dcml="0" files="ExtractData" intrvl="contin" name="ACT_SPORTS">
+    <location EndPos="156" StartPos="153" width="4"/>
+    <labl>ACT: Sports, exercise, and recreation</labl>
+    <txt><![CDATA[This variable indicates the minutes per day each respondent reported spending in sports, exercise and recreational activities such as pleasure boating, throwing a Frisbee, kite flying, or ballooning, and active, participatory outdoor games or activities, such as horseshoes, croquet, and paintball.]]></txt>
+    <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
+    <concept vocab="IPUMS">Time Use Variables -- PERSON</concept>
+    <varFormat schema="other" type="numeric"/>
+  </var>
+  <var ID="ACT_WORK" dcml="0" files="ExtractData" intrvl="contin" name="ACT_WORK">
+    <location EndPos="160" StartPos="157" width="4"/>
+    <labl>ACT: Working and Work-related Activities</labl>
+    <txt><![CDATA[This variable indicates the minutes per day each respondent reported spending work activities such as working, doing activities as part of one's job, engaging in income-generating activities (not as part of one's job), and looking for jobs and interviewing.]]></txt>
+    <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
+    <concept vocab="IPUMS">Time Use Variables -- PERSON</concept>
+    <varFormat schema="other" type="numeric"/>
+  </var>
+</dataDscr>
+</codeBook>
