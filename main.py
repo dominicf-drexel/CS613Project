@@ -27,9 +27,30 @@ print(y.shape)
 # TODO split data
 #x_train = x.copy()
 #y_train = y.copy()
-#x_test = x.copy()
+x_test = x.copy()
+
+# TODO add linear regression algorithm
+linear_preditions = []
 
 # knn regression algorithm
 # returns predictions as np.array
 #knn = KNN(x_train, y_train, k=5)
 #predictions = knn.predict(x_test)
+knn_predictions = []
+
+# TODO ensemble algorithm
+ensemble_predictions = []
+for i in range(len(x_test)):
+    preditions = []
+
+    # add the linear regression predictions
+    for pred in linear_preditions:
+        predictions.append(pred[i])
+
+    # add the knn regression predictions
+    predictions.append(knn_predictions[i]
+    
+    # ensemble algorithm
+    
+    
+
