@@ -3,6 +3,7 @@ from DataLoad import LoadATUSExtract
 from CreateFeatures import TransformIntoFeatures
 from MatrixCreation import RowsToMatrix, ExtractX, ExtractY
 from DataOperations import GenerateTrainingValidationIndices, GenerateTrainingValidationIndicesByFeatureValue, GetSubset
+from LinearRegression import LinearRegression
 import KNN
 
 #
@@ -12,19 +13,19 @@ filepath: str = "./data/atus_00003.csv"
 #print(columnnames)
 
 (readyrows, readycolumns) = TransformIntoFeatures(rowsdata, columnnames)
-print(readycolumns)
+#print(readycolumns)
 
 (matrixdata, matrixcolumnnames) = RowsToMatrix(readyrows, readycolumns)
-print(matrixcolumnnames)
+#print(matrixcolumnnames)
 
 #Create Training, Validation data:
 x: np.ndarray
 xcolumnnames: list[str]
 x, xcolumnnames = ExtractX(matrixdata, matrixcolumnnames, True)
-print(x.shape)
+print(f"x.shape={x.shape}")
 
 y: np.ndarray = ExtractY(matrixdata, "ACT_WORK", matrixcolumnnames)
-print(y.shape)
+print(f"y.shape={y.shape}")
 #print(y)
 
 # (trainingindices, validationindices) = GenerateTrainingValidationIndices(x, 0)
@@ -32,19 +33,34 @@ print(y.shape)
 (trainingdata, trainingresults) = GetSubset(x, y, trainingindices)
 (validationdata, validationresults) = GetSubset(x, y, validationindices)
 
-#
+print(f"training data = {trainingdata.shape}")
+print(f"training results = {trainingresults.shape}")
+print(f"validation data = {validationdata.shape}")
+print(f"validation results = {validationresults.shape}")
+
 #Analysis:
-# TODO add linear regression algorithm
-linear_predictions = []
+
+# linear regression algorithm
+lr = LinearRegression()
+print("START linear regression: fit")
+lr.fit(trainingdata, trainingresults)
+print("START linear regression: predict")
+linear_predictions = lr.predict(validationdata)
+print(f"linear predictions shape = {linear_predictions.shape}")
+# TODO linear regression evaluation
 
 # knn regression algorithm
-# returns predictions as np.array
-#knn = KNN(x_train, y_train, k=5)
-#predictions = knn.predict(x_test)
-knn_predictions = []
+print("START k nearest neighbors: fit")
+knn = KNN.KNN(trainingdata, trainingresults, k=5)
+print("START k nearest neighbors: predict")
+knn_predictions = knn.predict(validationdata)
+print(f"knn predictions shape = {knn_predictions.shape}")
+# TODO knn regression evalation
 
+"""
 # TODO ensemble algorithm
 ensemble_predictions = []
+x_test = []
 for i in range(len(x_test)):
     predictions = []
 
@@ -56,6 +72,6 @@ for i in range(len(x_test)):
     predictions.append(knn_predictions[i])
     
     # ensemble algorithm
-    
+"""
     
 
