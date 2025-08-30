@@ -5,6 +5,7 @@ from MatrixCreation import RowsToMatrix, ExtractX, ExtractY
 from DataOperations import GenerateTrainingValidationIndices, GenerateTrainingValidationIndicesByFeatureValue, GetSubset
 import LinearRegression
 import KNN
+import Statistics
 
 #
 #Load data:
@@ -57,8 +58,15 @@ print("START k nearest neighbors: predict")
 knn_predictions = knn.predict(validationdata)
 print(f"knn predictions shape = {knn_predictions.shape}")
 # knn regression evalation
-knn_mse = np.mean((validationresults - knn_predictions) ** 2)
+#knn_mse = np.mean((validationresults - knn_predictions) ** 2)
+knn_mse = Statistics.ComputeMSE(validationresults, knn_predictions)
+knn_rmse = Statistics.ComputeRMSE(validationresults, knn_predictions)
+knn_mae = Statistics.ComputeMAE(validationresults, knn_predictions)
+knn_r2 = Statistics.ComputeR2(validationresults, knn_predictions)
 print(f"KNN MSE: {knn_mse}")
+print(f"KNN RMSE: {knn_rmse}")
+print(f"KNN MAE: {knn_mae}")
+print(f"KNN R2: {knn_r2}")
 
 
 # ensemble algorithm consists of the following models

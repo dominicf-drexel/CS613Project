@@ -34,3 +34,23 @@ def PrintConfusionMatrix(c: np.ndarray, values: list[Any]):
 
                 resultstring: str = f"Predicted: {predictedvalue}, Actual: {actualvalue}: {observationcount} observations ({result})"
                 print(resultstring)
+
+
+
+def ComputeMSE(actual: np.ndarray, predicted: np.ndarray):
+    # mean squared error
+    return float(np.mean((actual - predicted) ** 2))
+
+def ComputeRMSE(actual: np.ndarray, predicted: np.ndarray):
+    # root mean squared error
+    return np.sqrt(np.mean((actual - predicted) ** 2))
+
+def ComputeMAE(actual: np.ndarray, predicted: np.ndarray):
+    # mean absolute error
+    return np.mean(np.abs(actual - predicted))
+
+def ComputeR2(actual: np.ndarray, predicted: np.ndarray):
+    # r-squared coefficient of determination
+    ss_residual = np.sum((actual - predicted) ** 2)
+    ss_total = np.sum((actual - np.mean(actual)) ** 2)
+    return 1 - (ss_residual / ss_total)
