@@ -360,10 +360,11 @@ def ContinuousToCategorical(fieldname: str, value: str, row: list) -> List[str] 
 
 def TransformIntoFeatures(rowdata: list[list[str]], columnnames: list[str]) -> Tuple[list[list[str]], list[str]]:
     readyrows: list = []
-    readycolumnnames: list = []
+    readycolumnnames: list[str] | None= None
 
     for i in range(len(rowdata)):
         newrow = []
+        newrowcolumns: list[str] = []
 
         for j in range(len(columnnames)):
             value = rowdata[i][j]
@@ -373,19 +374,37 @@ def TransformIntoFeatures(rowdata: list[list[str]], columnnames: list[str]) -> T
             
             createdcolumns = CategoricalToOperable(columnname, value, newrow)
             if (createdcolumns is not None):
-                readycolumnnames.extend(createdcolumns)
-                continue
+                newrowcolumns.extend(createdcolumns)
     
+                if (len(newrow) != len(newrowcolumns)):
+                    raise Exception()
+
+                continue
+        
             createdcolumns = ContinuousToCategorical(columnname, value, newrow)
             if (createdcolumns is not None):
-                readycolumnnames.extend(createdcolumns)
+                newrowcolumns.extend(createdcolumns)
+
+                if (len(newrow) != len(newrowcolumns)):
+                    raise Exception()
+
                 continue
 
             newrow.append(float(0 if value == "" else value))
 
             fields: list[str] = [columnname]
-            readycolumnnames.extend(fields)
+            newrowcolumns.extend(fields)
+
+            if (len(newrow) != len(newrowcolumns)):
+                raise Exception()
 
         readyrows.append(newrow)
+        if readycolumnnames is None:
+            readycolumnnames = newrowcolumns
 
+        if (len(newrow) != len(newrowcolumns)):
+            raise Exception()
+
+    if readycolumnnames is None:
+        readycolumnnames = []
     return (readyrows, readycolumnnames)

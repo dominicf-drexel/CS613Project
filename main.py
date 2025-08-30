@@ -2,35 +2,40 @@ import numpy as np
 from DataLoad import LoadATUSExtract
 from CreateFeatures import TransformIntoFeatures
 from MatrixCreation import RowsToMatrix, ExtractX, ExtractY
+from DataOperations import GenerateTrainingValidationIndices, GenerateTrainingValidationIndicesByFeatureValue, GetSubset
 import KNN
 
-# comment for test commit - need to delete this
-
+#
+#Load data:
 filepath: str = "./data/atus_00003.csv"
 (rowsdata, columnnames) = LoadATUSExtract(filepath)
 #print(columnnames)
 
 (readyrows, readycolumns) = TransformIntoFeatures(rowsdata, columnnames)
-#print(readycolumns)
+print(readycolumns)
 
 (matrixdata, matrixcolumnnames) = RowsToMatrix(readyrows, readycolumns)
 print(matrixcolumnnames)
 
-x: np.ndarray = ExtractX(matrixdata, matrixcolumnnames, True)
+#Create Training, Validation data:
+x: np.ndarray
+xcolumnnames: list[str]
+x, xcolumnnames = ExtractX(matrixdata, matrixcolumnnames, True)
 print(x.shape)
 
 y: np.ndarray = ExtractY(matrixdata, "ACT_WORK", matrixcolumnnames)
 print(y.shape)
 #print(y)
 
+# (trainingindices, validationindices) = GenerateTrainingValidationIndices(x, 0)
+(trainingindices, validationindices) = GenerateTrainingValidationIndicesByFeatureValue(x, 0, matrixcolumnnames, "YEAR")
+(trainingdata, trainingresults) = GetSubset(x, y, trainingindices)
+(validationdata, validationresults) = GetSubset(x, y, validationindices)
 
-# TODO split data
-#x_train = x.copy()
-#y_train = y.copy()
-x_test = x.copy()
-
+#
+#Analysis:
 # TODO add linear regression algorithm
-linear_preditions = []
+linear_predictions = []
 
 # knn regression algorithm
 # returns predictions as np.array
@@ -41,14 +46,14 @@ knn_predictions = []
 # TODO ensemble algorithm
 ensemble_predictions = []
 for i in range(len(x_test)):
-    preditions = []
+    predictions = []
 
     # add the linear regression predictions
-    for pred in linear_preditions:
+    for pred in linear_predictions:
         predictions.append(pred[i])
 
     # add the knn regression predictions
-    predictions.append(knn_predictions[i]
+    predictions.append(knn_predictions[i])
     
     # ensemble algorithm
     

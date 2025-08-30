@@ -5,24 +5,32 @@ def RowsToMatrix(readyrows: list[list[str]], readycolumnnames: list[str]) -> Tup
     returnmatrix: np.ndarray = np.array(readyrows)
     return (returnmatrix, readycolumnnames)
 
-def ExtractX(rowmatrix: np.ndarray, columnnames: list[str], removedataqualityflags: bool) -> np.ndarray:
-    identifierfields: list[str] = ["CASEID","SERIAL","PERNUM","LINENO"]
+def ExtractX(rowmatrix: np.ndarray, columnnames: list[str], removedataqualityflags: bool) -> Tuple[np.ndarray, list[str]]:
+    IDENTIFIERFIELDS: list[str] = ["CASEID","SERIAL","PERNUM","LINENO"]
+
+    xcolumnnames: list[str] = []
 
     toremoveindices: list[int] = []
     for i in range(len(columnnames)):
         columnname: str = columnnames[i]
 
-        if columnname in identifierfields:
+        if columnname in IDENTIFIERFIELDS:
             toremoveindices.append(i)
-        elif columnname.startswith("ACT_"):
+            continue
+        
+        if columnname.startswith("ACT_"):
             toremoveindices.append(i)
-
+            continue
+        
         if (removedataqualityflags):
             if columnname.startswith("Q"):
                 toremoveindices.append(i)
+                continue
+
+        xcolumnnames.append(columnname)
 
     x: np.ndarray = np.delete(rowmatrix, toremoveindices, axis=1)
-    return x
+    return (x, xcolumnnames)
 
 def ExtractY(rowmatrix: np.ndarray, ycolumnname: str, columnnames: list[str]) -> np.ndarray:
     columnindex: int = columnnames.index(ycolumnname)
