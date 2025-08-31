@@ -58,14 +58,14 @@ print(f"validation results = {validationresults.shape}")
 #Analysis:
 
 # linear regression algorithm
-print("START Linear Regression modeling")
+print("START Linear Regression training")
 validation_stats, linear_models = LinearRegression.s_folds_validation(trainingdata, trainingresults, 5)
 print(f"LR Mean: {validation_stats['mean']}")
 print(f"LR STD: {validation_stats['std']}")
 print(f"LR ALL RMSE: {validation_stats['all_rmse']}")
 
 # linear regression gradient algorithm
-print("START Linear Regression Gradient modeling")
+print("START Linear Regression Gradient training")
 validation_stats, linear_models = LinearRegressionGradient.s_folds_validation(trainingdata, trainingresults, 5)
 print(f"LR Gradient Mean: {validation_stats['mean']}")
 print(f"LR Gradient STD: {validation_stats['std']}")
@@ -74,7 +74,7 @@ print(f"LR Gradient STD: {validation_stats['std']}")
 
 # knn regression algorithm
 # gets statistics for all k_values but only the last k_value is used for ensemble
-print("START k Nearest Neighbors modeling")
+print("START k Nearest Neighbors training")
 k_values = [int(np.sqrt(trainingdata.shape[0]))]
 for k in k_values:
     knn = KNN.KNN(trainingdata, trainingresults, k=k)
@@ -99,6 +99,8 @@ for k in k_values:
 # predictions from all linear regression models
 # S-fold * runs = number of models
 # So if S-fold=5 then 5*100 models
+print("START Run the linear regression models")
+print("20 runs and 5 folds each * 2 = 200 models")
 all_lr_predictions = []
 all_gd_predictions = []
 for run_models in linear_models: # 20 runs (hardcoded in LinearRegression.py)
@@ -111,6 +113,7 @@ for run_models in linear_models: # 20 runs (hardcoded in LinearRegression.py)
         all_gd_predictions.append(lr_gd_pred)
 
 # average ALL linear regression predictions and KNN
+print("START Run the ensemble algorithm, which includes the KNN algorithm")
 ensemble_predictions = []
 for i in range(len(validationdata)):
     lr_aggregate_prediction = np.mean([pred[i] for pred in all_lr_predictions])
