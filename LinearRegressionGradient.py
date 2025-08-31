@@ -57,12 +57,20 @@ class LinearRegressionGradient:
         y_hat_val = x_val @ self.weights
         return y_hat_train, y_hat_val
     
+    def predict(self, x):
+        predictions = x @ self.weights
+        return predictions
+    
+    
 def gradient_batch_regression(trainingdata, trainingresults, validationdata, validationresults, learn_rate=0.01, epochs=1000):
     lr = LinearRegressionGradient(learn_rate=learn_rate, epochs=epochs)
     x_train, y_train, x_val, y_val = lr.preprocess(trainingdata, trainingresults, validationdata, validationresults)
 
     # Batch training
-    y_hat_train, y_hat_val = lr.fit(x_train, y_train, x_val)
+    lr.fit(x_train, y_train, x_val)
+
+    y_hat_train = lr.predict(x_train)
+    y_hat_val = lr.predict(x_val)
 
     rmse_train = np.sqrt(np.mean((y_train - y_hat_train)**2))
     rmse_val = np.sqrt(np.mean((y_val - y_hat_val)**2))
