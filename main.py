@@ -58,12 +58,14 @@ print(f"validation results = {validationresults.shape}")
 #Analysis:
 
 # linear regression algorithm
+print("START Linear Regression modeling")
 validation_stats, linear_models = LinearRegression.s_folds_validation(trainingdata, trainingresults, 5)
 print(f"LR Mean: {validation_stats['mean']}")
 print(f"LR STD: {validation_stats['std']}")
 print(f"LR ALL RMSE: {validation_stats['all_rmse']}")
 
 # linear regression gradient algorithm
+print("START Linear Regression Gradient modeling")
 validation_stats, linear_models = LinearRegressionGradient.s_folds_validation(trainingdata, trainingresults, 5)
 print(f"LR Gradient Mean: {validation_stats['mean']}")
 print(f"LR Gradient STD: {validation_stats['std']}")
@@ -72,6 +74,7 @@ print(f"LR Gradient STD: {validation_stats['std']}")
 
 # knn regression algorithm
 # gets statistics for all k_values but only the last k_value is used for ensemble
+print("START k Nearest Neighbors modeling")
 k_values = [int(np.sqrt(trainingdata.shape[0]))]
 for k in k_values:
     knn = KNN.KNN(trainingdata, trainingresults, k=k)
