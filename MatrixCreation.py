@@ -6,7 +6,7 @@ def RowsToMatrix(readyrows: list[list[str]], readycolumnnames: list[str]) -> Tup
     return (returnmatrix, readycolumnnames)
 
 def ExtractX(rowmatrix: np.ndarray, columnnames: list[str], removedataqualityflags: bool) -> Tuple[np.ndarray, list[str]]:
-    IDENTIFIERFIELDS: list[str] = ["CASEID","SERIAL","PERNUM","LINENO"]
+    IDENTIFIERFIELDS: list[str] = ["CASEID","SERIAL","PERNUM","LINENO", "WT06", "WT20"]
 
     xcolumnnames: list[str] = []
 
