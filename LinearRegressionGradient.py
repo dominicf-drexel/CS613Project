@@ -1,75 +1,82 @@
 import numpy as np
-from DataLoad import LoadATUSExtract
-from CreateFeatures import TransformIntoFeatures
-from MatrixCreation import RowsToMatrix, ExtractX, ExtractY
 
-filepath: str = "./data/atus_00003.csv"
-(rowsdata, columnnames) = LoadATUSExtract(filepath)
+#filepath: str = "./data/atus_00003.csv"
+#(rowsdata, columnnames) = LoadATUSExtract(filepath)
+#
+#(readyrows, readycolumns) = TransformIntoFeatures(rowsdata, columnnames)
+#
+#(matrixdata, matrixcolumnnames) = RowsToMatrix(readyrows, readycolumns)
+#
+#x: np.ndarray = ExtractX(matrixdata, matrixcolumnnames, True)
+#bias_column = np.ones((x.shape[0],1))
+#
+##BLS_PCARE_SLEEP is not in the dataset given, change "ACT_PCARE" to BLS_PCARE_SLEEP
+#y: np.ndarray = ExtractY(matrixdata, "ACT_PCARE", matrixcolumnnames)
+#y_reshaped = y.reshape(-1, 1)
+#
+#data = np.concatenate((bias_column, x, y_reshaped), axis=1)
 
-(readyrows, readycolumns) = TransformIntoFeatures(rowsdata, columnnames)
+class LinearRegressionGradient:
+    def __init__(self, learn_rate=0.01, epochs=1000):
+        self.weights = None
+        self.learn_rate = learn_rate
+        self.epochs = epochs
 
-(matrixdata, matrixcolumnnames) = RowsToMatrix(readyrows, readycolumns)
+    def preprocess(self, trainingdata, trainingresults, validationdata, validationresults):
+        y_train = trainingresults
+        y_train = y_train.reshape(-1, 1)
+        y_val = validationresults
+        y_val = y_val.reshape(-1, 1)
 
-x: np.ndarray = ExtractX(matrixdata, matrixcolumnnames, True)
-bias_column = np.ones((x.shape[0],1))
+        mean = np.atleast_2d(np.mean(trainingdata, axis=0))
 
-#BLS_PCARE_SLEEP is not in the dataset given, change "ACT_PCARE" to BLS_PCARE_SLEEP
-y: np.ndarray = ExtractY(matrixdata, "ACT_PCARE", matrixcolumnnames)
-y_reshaped = y.reshape(-1, 1)
+        std = np.atleast_2d(np.std(trainingdata, axis=0, ddof=1))
+        std[std == 0] = 1
 
-data = np.concatenate((bias_column, x, y_reshaped), axis=1)
+        z_scored_data_train = (trainingdata - mean) / std
+        bias_train = np.ones((len(trainingdata),1))
+        x_train = np.column_stack([bias_train, z_scored_data_train])
 
-np.random.seed(0)
-np.random.shuffle(data)
+        z_scored_data_val = (validationdata - mean) / std
+        bias_val = np.ones((len(validationdata),1))
+        x_val = np.column_stack([bias_val, z_scored_data_val])
 
-datasets = np.array_split(data, 3, axis=0)
+        return x_train, y_train, x_val, y_val
 
-training_set = np.concatenate((datasets[0],datasets[1]))
-validation_set = datasets[2]
 
-y_train = training_set[:, -1]
-y_train = y_train.reshape(-1, 1)
-y_val = validation_set[:, -1]
-y_val = y_val.reshape(-1, 1)
+    def fit(self, x_train, y_train, x_val):
+        self.weights = np.random.uniform(-0.0001, 0.0001, size=(len(x_train[0]),1))
 
-mean = np.atleast_2d(np.mean(training_set[:, :-1], axis=0))
+        N = len(x_train)
 
-std = np.atleast_2d(np.std(training_set[:, :-1], axis=0, ddof=1))
-std[std == 0] = 1
+        for i in range(self.epochs):
+            y_hat_train = x_train @ self.weights
+            gradient = (2/N)*(np.transpose(x_train))@(y_hat_train - y_train)
+            self.weights = self.weights - (self.learn_rate*gradient)
 
-z_scored_data_train = (training_set[:, :-1] - mean) / std
-bias_train = np.ones((len(training_set),1))
-x_train = np.column_stack([bias_train, z_scored_data_train])
+        y_hat_val = x_val @ self.weights
+        return y_hat_train, y_hat_val
+    
+def gradient_batch_regression(trainingdata, trainingresults, validationdata, validationresults, learn_rate=0.01, epochs=1000):
+    lr = LinearRegressionGradient(learn_rate=learn_rate, epochs=epochs)
+    x_train, y_train, x_val, y_val = lr.preprocess(trainingdata, trainingresults, validationdata, validationresults)
 
-z_scored_data_val = (validation_set[:, :-1] - mean) / std
-bias_val = np.ones((len(validation_set),1))
-x_val = np.column_stack([bias_val, z_scored_data_val])
+    # Batch training
+    y_hat_train, y_hat_val = lr.fit(x_train, y_train, x_val)
 
-weights = np.random.uniform(-0.0001, 0.0001, size=(len(x_train[0]),1))
+    rmse_train = np.sqrt(np.mean((y_train - y_hat_train)**2))
+    rmse_val = np.sqrt(np.mean((y_val - y_hat_val)**2))
 
-learn_rate = 0.01
-N = len(x_train)
+    difference_train = np.abs(y_train - y_hat_train)
+    sum_train = np.abs(y_train) + np.abs(y_hat_train)
+    smape_train = np.mean(difference_train / sum_train)
 
-for i in range(10000):
-    y_hat_train = x_train @ weights
-    y_hat_val = x_val @ weights
+    difference_val = np.abs(y_val - y_hat_val)
+    sum_val = np.abs(y_val) + np.abs(y_hat_val)
+    smape_val = np.mean(difference_val / sum_val)
 
-    gradient = (2/N)*(np.transpose(x_train))@(y_hat_train - y_train)
-
-    weights = weights - (learn_rate*gradient)
-
-rmse_train = np.sqrt(np.mean((y_train - y_hat_train)**2))
-rmse_val = np.sqrt(np.mean((y_val - y_hat_val)**2))
-
-difference_train = np.abs(y_train - y_hat_train)
-sum_train = np.abs(y_train) + np.abs(y_hat_train)
-smape_train = np.mean(difference_train / sum_train)
-
-difference_val = np.abs(y_val - y_hat_val)
-sum_val = np.abs(y_val) + np.abs(y_hat_val)
-smape_val = np.mean(difference_val / sum_val)
-
-print("Training RMSE: ", rmse_train)
-print("Validation RMSE: ", rmse_val)
-print("Training SMAPE: ", smape_train)
-print("Validation SMAPE: ", smape_val)
+    print("\nBatch Gradient Descent Evaluation:")
+    print("Training RMSE: ", rmse_train)
+    print("Validation RMSE: ", rmse_val)
+    print("Training SMAPE: ", smape_train)
+    print("Validation SMAPE: ", smape_val)
