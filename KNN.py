@@ -8,12 +8,14 @@ class KNN:
         self.x_train = x_train # features
         self.y_train = y_train # labels / targets of features
 
-
-
     def predict(self, x_test):
         predictions = []
 
+        j = 0
         for x in x_test:
+            j += 1
+            if j % 100 == 0:
+                print(f"{j} of {len(x_test)}")
             distances = []
             for i in range(len(self.x_train)):
                 # compute the euclidean distance

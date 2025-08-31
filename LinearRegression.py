@@ -42,18 +42,19 @@ class LinearRegression:
         return predictions
 
 
-
 def s_folds_validation(x, y, S):
-    bias_column = np.ones((x.shape[0],1))
-    processed_data = np.concatenate((bias_column, x, y.reshape(-1,1)), axis=1)   
+    #bias_column = np.ones((x.shape[0],1))
+    processed_data = np.concatenate((x, y.reshape(-1,1)), axis=1)   
     
     rmse_array = np.empty(20)
+    all_models = [] 
     for i in range(20):
         np.random.seed(i)
         np.random.shuffle(processed_data)
 
         folds = np.array_split(processed_data, S, axis=0)
         squared_error_array = np.empty(S)
+        run_models = []
 
         for fold in range(S):
             validation = folds[fold]
@@ -76,12 +77,16 @@ def s_folds_validation(x, y, S):
 
             lr = LinearRegression()
             lr.fit(X_TRAIN, Y_TRAIN)
+            run_models.append(lr) 
+            
             Y_VAL_PREDICTED = lr.predict(X_VAL)
 
             
             squared_error = (Y_VAL - Y_VAL_PREDICTED)**2
             mse = np.mean(squared_error)
             squared_error_array = np.append(squared_error_array, mse)
+
+        all_models.append(run_models)
 
         mse_total = np.mean(squared_error_array)
         rmse = np.sqrt(mse_total)
@@ -90,9 +95,12 @@ def s_folds_validation(x, y, S):
     mean = np.mean(rmse_array)
     std = np.std(rmse_array)
 
-    print(f"{S} Fold Statistics:")
-    print("Mean: ", mean)
-    print("Standard Deviation: ", std) 
+    stats = {"mean":mean, "std":std, "all_rmse":rmse_array}
+    return stats, all_models
+
+    #print(f"{S} Fold Statistics:")
+    #print("Mean: ", mean)
+    #print("Standard Deviation: ", std) 
 
 #s_folds_validation(data, 3)
 #s_folds_validation(data, 223)

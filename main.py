@@ -44,12 +44,15 @@ print(f"validation results = {validationresults.shape}")
 # linear regression algorithm
 # currently statistics are printed directly
 # from within the s_folds_validation method
-LinearRegression.s_folds_validation(trainingdata, trainingresults, 5)
+validation_stats, linear_models = LinearRegression.s_folds_validation(trainingdata, trainingresults, 5)
+print(f"LR Mean: {validation_stats['mean']}")
+print(f"LR STD: {validation_stats['std']}")
+print(f"LR ALL RMSE: {validation_stats['all_rmse']}")
 
 # knn regression algorithm
-#print("START k nearest neighbors: fit")
+print("START k nearest neighbors: fit")
 knn = KNN.KNN(trainingdata, trainingresults, k=5)
-#print("START k nearest neighbors: predict")
+print("START k nearest neighbors: predict")
 knn_predictions = knn.predict(validationdata)
 #print(f"knn predictions shape = {knn_predictions.shape}")
 # knn regression evalation
@@ -69,23 +72,29 @@ print(f"KNN R2: {knn_r2}")
 # 1 KNN model
 
 
+# predictions from all linear regression models
+# S-fold * runs = number of models
+# So if S-fold=5 then 5*100 models
+all_lr_predictions = []
+for run_models in linear_models: # 20 runs (hardcoded in LinearRegression.py)
+    for model in run_models: # 5 (hardcoded in this file)
+        lr_pred = model.predict(validationdata)
+        all_lr_predictions.append(lr_pred)
+
+
+# average ALL linear regression predictions and KNN
 ensemble_predictions = []
 for i in range(len(validationdata)):
-    predictions = []
-
-    # add the linear regression predictions
-    for pred in linear_predictions:
-        predictions.append(pred[i])
-
-    # add the knn regression predictions
-    predictions.append(knn_predictions[i])
-    
-    # average all predictions for this point
-    pred = np.mean(predictions)
-    ensemble_predictions.append(pred)
+    lr_aggregate_prediction = np.mean([pred[i] for pred in all_lr_predictions])
+    final_ensemble_prediction = (lr_aggregate_prediction + knn_predictions[i]) / 2
+    ensemble_predictions.append(final_ensemble_prediction)
 
 ensemble_predictions = np.array(ensemble_predictions)
-    
-"""
+
+print(f"ensemble_predictions = {ensemble_predictions}")
+ensemble_mse = Statistics.ComputeMSE(validationresults, ensemble_predictions)
+ensemble_rmse = Statistics.ComputeRMSE(validationresults, ensemble_predictions)
+print(f"Ensemble MSE: {ensemble_mse}")
+print(f"Ensemble RMSE: {ensemble_rmse}")
     
 
