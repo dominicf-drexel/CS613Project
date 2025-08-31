@@ -4,18 +4,30 @@ class KNN:
     def __init__(self, x_train, y_train, k: int = 5):
         self.k = k
 
-        # training data
-        self.x_train = x_train # features
+        # normalization parameters
+        self.mean = np.mean(x_train, axis=0)
+        self.std = np.std(x_train, axis=0)
+
+        # prevent div by 0
+        #if self.std == 0:
+        #    self.std = 1
+        self.std[self.std == 0] = 1
+
+        # normalize training data
+        self.x_train = (x_train - self.mean) / self.std # features
         self.y_train = y_train # labels / targets of features
 
     def predict(self, x_test):
+
+        x_test_normalized = (x_test - self.mean) / self.std
+        
         predictions = []
 
         j = 0
-        for x in x_test:
+        for x in x_test_normalized:
             j += 1
             if j % 100 == 0:
-                print(f"{j} of {len(x_test)}")
+                print(f"{j} of {len(x_test_normalized)}")
             distances = []
             for i in range(len(self.x_train)):
                 # compute the euclidean distance
