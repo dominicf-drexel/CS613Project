@@ -29,6 +29,21 @@ y: np.ndarray = ExtractY(matrixdata, "ACT_PCARE_SLEEP_010101", matrixcolumnnames
 print(f"y.shape={y.shape}")
 #print(y)
 
+# check the range of sleep time
+print(f"Sleep Time min = {np.min(y)}")
+print(f"Sleep Time mean = {np.mean(y)}")
+print(f"Sleep Time max = {np.max(y)}")
+print(f"Sleep Time std = {np.std(y)}")
+
+# check the range of the feature variables
+#i = 0
+#for col in xcolumnnames:
+#    col_values = x[:, i]
+#    col_min = np.min(col_values)
+#    col_max = np.max(col_values)
+#    print(f"col: Min= {str(col_min)} Max= {str(col_max)}")
+#    i += 1
+
 # (trainingindices, validationindices) = GenerateTrainingValidationIndices(x, 0)
 (trainingindices, validationindices) = GenerateTrainingValidationIndicesByFeatureValue(x, 0, matrixcolumnnames, "YEAR")
 (trainingdata, trainingresults) = GetSubset(x, y, trainingindices)
@@ -50,21 +65,21 @@ print(f"LR STD: {validation_stats['std']}")
 print(f"LR ALL RMSE: {validation_stats['all_rmse']}")
 
 # knn regression algorithm
-print("START k nearest neighbors: fit")
-knn = KNN.KNN(trainingdata, trainingresults, k=5)
-print("START k nearest neighbors: predict")
-knn_predictions = knn.predict(validationdata)
-#print(f"knn predictions shape = {knn_predictions.shape}")
-# knn regression evalation
-#knn_mse = np.mean((validationresults - knn_predictions) ** 2)
-knn_mse = Statistics.ComputeMSE(validationresults, knn_predictions)
-knn_rmse = Statistics.ComputeRMSE(validationresults, knn_predictions)
-knn_mae = Statistics.ComputeMAE(validationresults, knn_predictions)
-knn_r2 = Statistics.ComputeR2(validationresults, knn_predictions)
-print(f"KNN MSE: {knn_mse}")
-print(f"KNN RMSE: {knn_rmse}")
-print(f"KNN MAE: {knn_mae}")
-print(f"KNN R2: {knn_r2}")
+# gets statistics for all k_values but only the last k_value is used for ensemble
+k_values = [int(np.sqrt(trainingdata.shape[0]))]
+for k in k_values:
+    knn = KNN.KNN(trainingdata, trainingresults, k=k)
+    knn_predictions = knn.predict(validationdata)
+
+    # statistics
+    knn_mse = Statistics.ComputeMSE(validationresults, knn_predictions)
+    knn_rmse = Statistics.ComputeRMSE(validationresults, knn_predictions)
+    knn_mae = Statistics.ComputeMAE(validationresults, knn_predictions)
+    knn_r2 = Statistics.ComputeR2(validationresults, knn_predictions)
+    print(f"KNN k={k} MSE: {knn_mse}")
+    print(f"KNN k={k} RMSE: {knn_rmse}")
+    print(f"KNN k={k} MAE: {knn_mae}")
+    print(f"KNN k={k} R2: {knn_r2}")
 
 
 # ensemble algorithm consists of the following models
