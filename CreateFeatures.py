@@ -259,8 +259,59 @@ def CategoricalToOperable_QEDUCYRS(value: str, row: list) -> List[str]:
     ]
     return fields
 
+def CategoricalToOperable_PAIDHOUR(value: str, row: list) -> List[str]:
+    row.append(1 if value == "01" else 0)
+    row.append(1 if value == "02" else 0)
+    row.append(1 if value == "99" else 0)
 
+    fields: list[str] = [
+    "PAIDHOUR_Paid hourly"
+    , "PAIDHOUR_Not paid hourly"
+    , "PAIDHOUR_NIU (Not in universe)"
+    ]
+    return fields
 
+def CategoricalToOperable_HH_NUMOWNKIDS(value: str, row: list) -> List[str]:
+    row.append(1 if value == "00" else 0)
+    row.append(1 if value == "01" else 0)
+    row.append(1 if value == "02" else 0)
+    row.append(1 if value == "03" else 0)
+    row.append(1 if value == "04" else 0)
+    row.append(1 if value == "05" else 0)
+    row.append(1 if value == "06" else 0)
+    row.append(1 if value == "07" else 0)
+    row.append(1 if value == "08" else 0)
+    row.append(1 if value == "09" else 0)
+    row.append(1 if value == "10" else 0)
+    row.append(1 if value == "99" else 0)
+
+    fields: list[str] = [
+    "HH_NUMOWNKIDS_00"
+    , "HH_NUMOWNKIDS_01"
+    , "HH_NUMOWNKIDS_02"
+    , "HH_NUMOWNKIDS_03"
+    , "HH_NUMOWNKIDS_04"
+    , "HH_NUMOWNKIDS_05"
+    , "HH_NUMOWNKIDS_06"
+    , "HH_NUMOWNKIDS_07"
+    , "HH_NUMOWNKIDS_08"
+    , "HH_NUMOWNKIDS_09"
+    , "HH_NUMOWNKIDS_10"
+    , "HH_NUMOWNKIDS_NIU (Not in universe)"
+    ]
+    return fields
+
+def CategoricalToOperable_FULLPART(value: str, row: list) -> List[str]:
+    row.append(1 if value == "01" else 0)
+    row.append(1 if value == "02" else 0)
+    row.append(1 if value == "99" else 0)
+
+    fields: list[str] = [
+    "FULLPART_Full time"
+    , "FULLPART_Part time"
+    , "FULLPART_NIU (Not in universe)"
+    ]
+    return fields
 
 def ConsolidatedCategoricalToOperable_EDUC(value: str, row: list) -> List[str]:
     row.append(1 if value in ["010", "011", "012", "013", "014", "015", "016", "017"] else 0)
@@ -283,18 +334,39 @@ def ConsolidatedCategoricalToOperable_EDUC(value: str, row: list) -> List[str]:
     ]
     return fields
 
+def ConsolidatedCategoricalToOperable_HH_NUMOWNKIDS(value: str, row: list) -> List[str]:
+    row.append(1 if value in ["00"] else 0)
+    row.append(1 if value in ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10"] else 0)
+    row.append(1 if value == "99" else 0)
+
+    fields: list[str] = [
+    "HH_NUMOWNKIDS_Does Not Have Kids"
+    , "HH_NUMOWNKIDS_Has Kids"
+    , "HH_NUMOWNKIDS_NIU (Not in universe)"
+    ]
+    return fields
 
 def CategoricalToOperable(fieldname: str, value: str, row: list) -> List[str] | None:
     if (fieldname.casefold() == "SEX".casefold()):
         return CategoricalToOperable_SEX(value, row)
     elif (fieldname.casefold() == "EDUC".casefold()):
+        # return CategoricalToOperable_EDUC(value, row)
         return ConsolidatedCategoricalToOperable_EDUC(value, row)
     elif (fieldname.casefold() == "EDUCYRS".casefold()):
-        return CategoricalToOperable_EDUCYRS(value, row)
+        # return CategoricalToOperable_EDUCYRS(value, row)
+        pass
     elif (fieldname.casefold() == "SPOUSEPRES".casefold()):
         return CategoricalToOperable_SPOUSEPRES(value, row)
     elif (fieldname.casefold() == "SPUSUALHRS".casefold()):
         return CategoricalToOperable_SPUSUALHRS(value, row)
+    elif (fieldname.casefold() == "PAIDHOUR".casefold()):
+        return CategoricalToOperable_PAIDHOUR(value, row)
+    elif (fieldname.casefold() == "HH_NUMOWNKIDS".casefold()):
+        # return CategoricalToOperable_HH_NUMOWNKIDS(value, row)
+        return ConsolidatedCategoricalToOperable_HH_NUMOWNKIDS(value, row)
+    elif (fieldname.casefold() == "FULLPART".casefold()):
+        return CategoricalToOperable_FULLPART(value, row)
+
     elif (fieldname.casefold() == "QSPUSUALHRS".casefold()):
         return CategoricalToOperable_QSPUSUALHRS(value, row)
     elif (fieldname.casefold() == "QEDUC".casefold()):
@@ -352,9 +424,136 @@ def ContinuousToCategorical_AGE(value: str, row: list) -> List[str]:
 
     return fields
 
+def ContinuoustoCategorical_UHRSWORKT(value: str, row: list) -> List[str]:
+    intvalue: int = -1
+    try:
+        intvalue = int(value)
+    except:
+        raise Exception()
+    
+    breaks: list[int] = [
+        35,
+        50
+    ]
+
+    fields: list[str] = []
+    prev: int = 0
+    for i in range(len(breaks)):
+        fieldvalue: int = 1 if intvalue >= prev and intvalue <= breaks[i] else 0
+        fieldlabel: str = f"UHRSWORKT: {prev} to {breaks[i]}"
+        row.append(fieldvalue)
+        fields.append(fieldlabel)
+        prev = breaks[i]
+
+    lastfieldvalue: int = 1 if intvalue >= prev else 0
+    lastfieldlabel: str = f"UHRSWORKT: {prev} and over"
+    row.append(lastfieldvalue)
+    fields.append(lastfieldlabel)
+
+    return fields
+
+def ContinuoustoCategorical_EARNWEEK(value: str, row: list) -> List[str]:
+    #Note: 2003+: Usual weekly earnings greater than or equal to $2884.61 are assigned a value of $2884.61.
+    floatvalue: float = -1
+    try:
+        floatvalue = float(value)
+    except:
+        raise Exception()
+    
+    breaks: list[float] = [
+        290, # Minimum wage
+        950, # Rough estimate minimum for middle class (~50,000/yr)
+        2200 # Rough estimate minimum for upper middle class (~115,000/yr)
+    ]
+
+    fields: list[str] = []
+    prev: float = 0
+    for i in range(len(breaks)):
+        fieldvalue: float = 1 if floatvalue >= prev and floatvalue <= breaks[i] else 0
+        fieldlabel: str = f"EARNWEEK: {prev} to {breaks[i]}"
+        row.append(fieldvalue)
+        fields.append(fieldlabel)
+        prev = breaks[i]
+
+    lastfieldvalue: float = 1 if floatvalue >= prev else 0
+    lastfieldlabel: str = f"EARNWEEK: {prev} and over"
+    row.append(lastfieldvalue)
+    fields.append(lastfieldlabel)
+
+    return fields
+
+def ContinuoustoCategorical_SPEARNWEEK(value: str, row: list) -> List[str]:
+    #Note: 2003+: Usual weekly earnings greater than or equal to $2884.61 are assigned a value of $2884.61.
+    floatvalue: float = -1
+    try:
+        floatvalue = float(value)
+    except:
+        raise Exception()
+    
+    breaks: list[float] = [
+        290, # Minimum wage
+        950, # Rough estimate minimum for middle class (~50,000/yr)
+        2200 # Rough estimate minimum for upper middle class (~115,000/yr)
+    ]
+
+    fields: list[str] = []
+    prev: float = 0
+    for i in range(len(breaks)):
+        fieldvalue: float = 1 if floatvalue >= prev and floatvalue <= breaks[i] else 0
+        fieldlabel: str = f"SPEARNWEEK: {prev} to {breaks[i]}"
+        row.append(fieldvalue)
+        fields.append(fieldlabel)
+        prev = breaks[i]
+
+    lastfieldvalue: float = 1 if floatvalue >= prev else 0
+    lastfieldlabel: str = f"SPEARNWEEK: {prev} and over"
+    row.append(lastfieldvalue)
+    fields.append(lastfieldlabel)
+
+    return fields
+
+def ContinuoustoCategorical_ACT_TRAVELING(value: str, row: list) -> List[str]:
+    intvalue: int = -1
+    try:
+        intvalue = int(value)
+    except:
+        raise Exception()
+    
+    breaks: list[int] = [
+        30,
+        60,
+        120
+    ]
+
+    fields: list[str] = []
+    prev: int = 0
+    for i in range(len(breaks)):
+        fieldvalue: int = 1 if intvalue >= prev and intvalue <= breaks[i] else 0
+        fieldlabel: str = f"ACT_TRAVELING: {prev} to {breaks[i]}"
+        row.append(fieldvalue)
+        fields.append(fieldlabel)
+        prev = breaks[i]
+
+    lastfieldvalue: int = 1 if intvalue >= prev else 0
+    lastfieldlabel: str = f"ACT_TRAVELING: {prev} and over"
+    row.append(lastfieldvalue)
+    fields.append(lastfieldlabel)
+
+    return fields
+
 def ContinuousToCategorical(fieldname: str, value: str, row: list) -> List[str] | None:
     if (fieldname.casefold() == "AGE".casefold()):
         return ContinuousToCategorical_AGE(value, row)
+    elif (fieldname.casefold() == "UHRSWORKT".casefold()):
+        return ContinuoustoCategorical_UHRSWORKT(value, row)
+    elif (fieldname.casefold() == "EARNWEEK".casefold()):
+        return ContinuoustoCategorical_EARNWEEK(value, row)
+    elif (fieldname.casefold() == "SPEARNWEEK".casefold()):
+        return ContinuoustoCategorical_SPEARNWEEK(value, row)
+    
+    elif (fieldname.casefold() == "ACT_TRAVELING".casefold()):
+        return ContinuoustoCategorical_ACT_TRAVELING(value, row)
+    
     else:
         return None
 
