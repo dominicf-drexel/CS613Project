@@ -58,9 +58,12 @@ Person->Core Demographic->Core Demographic->AGE: Age
 Person->Core Demographic->Core Demographic->SEX: Sex
 Person->Education->Education->EDUC: Highest level of school completed
 Person->Education->Education->EDUCYRS: Years of education
+Person->Hours and Earnings->Hours and Earnings->EARNWEEK
+Person->Hours and Earnings->Hours and Earnings->PAIDHOUR
 Person->Spouse Characteristic->Spouse Characteristic->SPOUSEPRES: Spouse or unmarried partner in household
 Person->Spouse Characteristic->Spouse Characteristic->SPUSUALHRS: Usual work hours (spouse or partner)
 Person->Spouse Characteristic->Spouse Characteristic->SPEARNWEEK: weekly earnings (spouse or partner)
+Person->Constructed Child->Constructed Child->HH_NUMOWNKIDS
 
 Data Quality Flags:
 QSPUSUALHRS
@@ -79,11 +82,16 @@ ACT_EDUC: Educational activities
 ACT_FOOD: Eat and drinking
 ACT_HHACT: Household activities
 ACT_HHSERV: Household services
-ACT_PCARE: Personal care
+
+ACT_PCARE_NONSLEEP: Personl care, not including sleeping and sleeplessness
+ACT_PCARE_SLEEP_010101: Sleeping
+ACT_PCARE_SLEEP_010102: Sleeplessness
+ACT_PCARE_SLEEP_010199: Sleeping, n.e.c. (not elsewhere classified)
 ACT_PROFSERV: Professional and personal care services
 ACT_PURCH: Consumer purchases
 ACT_RELIG: Religions and spiritual activities
 ACT_SOCIAL: Socializing, relaxing, and leisure
 ACT_SPORTS: Sports, exercise, and recreation
+ACT_TRAVELING: Traveling
 ACT_WORK: Working and Work-related Activities
 
