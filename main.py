@@ -9,7 +9,7 @@ import Statistics
 
 #
 #Load data:
-filepath: str = "./data/atus_00005.csv"
+filepath: str = "./data/atus_00006.csv"
 (rowsdata, columnnames) = LoadATUSExtract(filepath)
 #print(columnnames)
 

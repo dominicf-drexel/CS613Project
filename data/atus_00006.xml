@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="ipums-ddi-xslt.xsl"?>
-<codeBook ID="ddi2-4b988ad0-516f-013e-da79-02420a1c0306-atus_00005.dat-www.atusdata.org" version="2.5" xmlns="ddi:codebook:2_5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="ddi:codebook:2_5 http://www.ddialliance.org/Specification/DDI-Codebook/2.5/XMLSchema/codebook.xsd">
+<codeBook ID="ddi2-4b988ad0-516f-013e-da79-02420a1c0306-atus_00006.dat-www.atusdata.org" version="2.5" xmlns="ddi:codebook:2_5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="ddi:codebook:2_5 http://www.ddialliance.org/Specification/DDI-Codebook/2.5/XMLSchema/codebook.xsd">
   <docDscr>
     <citation>
       <titlStmt>
         <titl>Codebook for an ATUS Data Extract</titl>
-        <subTitl>DDI 2.5 metadata describing the extract file  'atus_00005.dat'</subTitl>
-        <IDNo>ddi2-4b988ad0-516f-013e-da79-02420a1c0306-atus_00005.dat-www.atusdata.org</IDNo>
+        <subTitl>DDI 2.5 metadata describing the extract file  'atus_00006.dat'</subTitl>
+        <IDNo>ddi2-4b988ad0-516f-013e-da79-02420a1c0306-atus_00006.dat-www.atusdata.org</IDNo>
       </titlStmt>
       <rspStmt>
         <AuthEnty affiliation="University of Minnesota">IPUMS</AuthEnty>
       </rspStmt>
       <prodStmt>
         <producer abbr="IPUMS" affiliation="University of Minnesota" role="Documentation">IPUMS</producer>
-        <prodDate date="2025-08-30">August 30, 2025</prodDate>
+        <prodDate date="2025-08-31">August 31, 2025</prodDate>
         <prodPlac>IPUMS, 50 Willey Hall, 225 - 19th Avenue South, Minneapolis, MN 55455</prodPlac>
       </prodStmt>
       <distStmt>
@@ -24,14 +24,14 @@
   <stdyDscr>
     <citation>
       <titlStmt>
-        <titl>User Extract atus_00005.dat</titl>
+        <titl>User Extract atus_00006.dat</titl>
       </titlStmt>
       <rspStmt>
         <AuthEnty affiliation="University of Minnesota">IPUMS</AuthEnty>
       </rspStmt>
       <prodStmt>
         <producer abbr="IPUMS" affiliation="University of Minnesota" role="Documentation">IPUMS</producer>
-        <prodDate date="2025-08-30">August 30, 2025</prodDate>
+        <prodDate date="2025-08-31">August 31, 2025</prodDate>
         <prodPlac>IPUMS, 50 Willey Hall, 225 - 19th Avenue South, Minneapolis, MN 55455</prodPlac>
       </prodStmt>
       <distStmt>
@@ -42,7 +42,7 @@
         <serInfo>DOI:10.18128/D060.V3.2</serInfo>
       </serStmt>
       <verStmt>
-        <version date="2025-08-30"/>
+        <version date="2025-08-31"/>
       </verStmt>
     </citation>
     <stdyInfo>
@@ -52,7 +52,9 @@
         <topcClas vocab="IPUMS">Weights Variables -- PERSON</topcClas>
         <topcClas vocab="IPUMS">Core Demographic Variables -- PERSON</topcClas>
         <topcClas vocab="IPUMS">Education Variables -- PERSON</topcClas>
+        <topcClas vocab="IPUMS">Hours and Earnings Variables -- PERSON</topcClas>
         <topcClas vocab="IPUMS">Spouse Characteristic Variables -- PERSON</topcClas>
+        <topcClas vocab="IPUMS">Constructed Child Variables -- PERSON</topcClas>
         <topcClas vocab="IPUMS">Imputation Flags Variables -- PERSON</topcClas>
       </subject>
       <sumDscr ID="sdatref-42">
@@ -107,12 +109,12 @@ The licensing agreement for use of ATUS data requires that users supply us with 
         <disclaimer>The user of the data acknowledges that the original collector of the data, the authorized distributor of the data, and the relevant funding agency bear no responsibility for use of the data or for interpretations or inferences based upon such uses.</disclaimer>
       </useStmt>
     </dataAccs>
-    <notes><![CDATA[User-provided description:  Revision of (CS 613 Project data extract)]]></notes>
-    <notes>This extract is a revision of the user's previous extract, ID 7858873.</notes>
+    <notes><![CDATA[User-provided description:  Revision of (Revision of (CS 613 Project data extract))]]></notes>
+    <notes>This extract is a revision of the user's previous extract, ID 7858913.</notes>
   </stdyDscr>
   <fileDscr ID="ExtractData">
     <fileTxt>
-      <fileName>atus_00005.dat</fileName>
+      <fileName>atus_00006.dat</fileName>
       <fileCont>Microdata records</fileCont>
       <fileStrc type="rectangular"/>
       <fileType charset="ISO-8859-1">ISO-8859-1 data file</fileType>
@@ -580,8 +582,96 @@ EDUCYRS along with other information on education was drawn from the final CPS i
   <concept vocab="IPUMS">Education Variables -- PERSON</concept>
   <varFormat schema="other" type="numeric"/>
 </var>
-<var ID="SPOUSEPRES" dcml="0" files="ExtractData" intrvl="discrete" name="SPOUSEPRES">
+<var ID="FULLPART" dcml="0" files="ExtractData" intrvl="discrete" name="FULLPART">
   <location EndPos="76" StartPos="75" width="2"/>
+  <labl>Full time/part time employment status</labl>
+  <txt><![CDATA[FULLPART indicates whether the individual usually works full time or part time.  Full time employment is considered to be 35 or more hours per week.
+
+Other variables also capture working hours.  UHRSWORKT reports the total number of hours the individual usually works per week.
+
+FULLPART was collected at the time of the ATUS interview.  However, information on hours worked was only collected at that time for respondents who changed jobs or employers since the final CPS interview, or whose earnings were allocated in the final CPS interview. For other respondents, information on hours worked was carried forward from the final CPS interview.  CPSUPDATE may be useful as an indication that this information may be out of date.
+
+Full time/part time status was also collected at the time of the final CPS interview, 2-5 months before the ATUS interview.  See FULLPART_CPS8.  Other hours variables collected during the final CPS interview include the total number of hours usually worked (see UHRSWORKT_CPS8) and the total number of hours actually worked last week (see HRSWORKT_CPS8).]]></txt>
+  <catgry>
+    <catValu>01</catValu>
+    <labl>Full time</labl>
+  </catgry>
+  <catgry>
+    <catValu>02</catValu>
+    <labl>Part time</labl>
+  </catgry>
+  <catgry>
+    <catValu>99</catValu>
+    <labl>NIU (Not in universe)</labl>
+  </catgry>
+  <concept vocab="IPUMS">Hours and Earnings Variables -- PERSON</concept>
+  <varFormat schema="other" type="numeric"/>
+</var>
+<var ID="UHRSWORKT" dcml="0" files="ExtractData" intrvl="contin" name="UHRSWORKT">
+  <location EndPos="80" StartPos="77" width="4"/>
+  <labl>Hours usually worked per week</labl>
+  <txt><![CDATA[UHRSWORKT reports the total number of hours the respondent usually works per week at all jobs.
+
+UHRSWORKT was collected at the time of the ATUS interview.  However, information on hours worked was only collected at that time for respondents who changed jobs or employers since the final CPS interview, or whose earnings were allocated in the final CPS interview. For other respondents, information on hours worked was carried forward from the final CPS interview. 
+
+Information on hours worked was also collected at the time of the final CPS interview, 2-5 months before the ATUS interview.  See UHRSWORK1_CPS8, UHRSWORK2_CPS8, and UHRSWORKT_CPS8.
+
+Information on hours worked was also collected separately for the respondent's main job (UHRSWORK1) and other (second) job (UHRSWORK2).  UHRSWORKT is the sum of UHRSWORK1 and UHRSWORK2.]]></txt>
+  <codInstr><![CDATA[UHRSWORKT is a four-digit numeric variable reported in hours. 
+9995 = Hours Vary
+9999 = NIU (Not in Universe) 
+
+		
+Bottom codes:Reported hours that amount to less than one is recoded as 0 hours.]]></codInstr>
+  <concept vocab="IPUMS">Hours and Earnings Variables -- PERSON</concept>
+  <varFormat schema="other" type="numeric"/>
+</var>
+<var ID="EARNWEEK" dcml="2" files="ExtractData" intrvl="contin" name="EARNWEEK">
+  <location EndPos="87" StartPos="81" width="7"/>
+  <labl>Weekly earnings</labl>
+  <txt><![CDATA[EARNWEEK reports the respondent's usual weekly earnings in dollars.
+
+Weekly earnings are not available for persons who are self-employed.  The only earnings information available on the self-employed is household income (FAMINCOME).
+
+Weekly earnings includes the usual overtime pay reported in OTPAY.
+
+EARNWEEK was collected at the time of the ATUS interview.  However, earnings information was only collected at that time for respondents who changed jobs or employers since the final CPS interview, or whose earnings were allocated in the final CPS interview. For other respondents, earnings information was carried forward from the final CPS interview. CPSUPDATE indicates whether ATUS earnings were updated.
+
+Weekly earnings information was also collected at the time of the final CPS interview, 2-5 months before the ATUS interview.  See EARNWEEK_CPS8.]]></txt>
+  <codInstr><![CDATA[CodesEARNWEEK is a 7-digit numeric variable reporting the usual weekly earnings in dollars at 2 decimal places.
+
+NIU = 99999.99
+
+		
+Top codes:2003+: Usual weekly earnings greater than or equal to $2884.61 are assigned a value of $2884.61.]]></codInstr>
+  <concept vocab="IPUMS">Hours and Earnings Variables -- PERSON</concept>
+  <varFormat schema="other" type="numeric"/>
+</var>
+<var ID="PAIDHOUR" dcml="0" files="ExtractData" intrvl="discrete" name="PAIDHOUR">
+  <location EndPos="89" StartPos="88" width="2"/>
+  <labl>Hourly or non-hourly pay</labl>
+  <txt><![CDATA[PAIDHOUR reports whether the respondent is paid on an hourly basis.
+
+PAIDHOUR was collected at the time of the ATUS interview.  However, earnings information was only collected at that time for respondents who changed jobs or employers since the final CPS interview, or whose earnings were allocated in the final CPS interview. For other respondents, earnings information was carried forward from the final CPS interview.  CPSUPDATE may be useful as an indication that earnings information may be out of date.
+
+Information on rate of pay was also collected at the time of the final CPS interview, 2-5 months before the ATUS interview.  See PAIDHOUR_CPS8.]]></txt>
+  <catgry>
+    <catValu>01</catValu>
+    <labl>Paid hourly</labl>
+  </catgry>
+  <catgry>
+    <catValu>02</catValu>
+    <labl>Not paid hourly</labl>
+  </catgry>
+  <catgry>
+    <catValu>99</catValu>
+    <labl>NIU (Not in universe)</labl>
+  </catgry>
+  <concept vocab="IPUMS">Hours and Earnings Variables -- PERSON</concept>
+  <varFormat schema="other" type="numeric"/>
+</var>
+<var ID="SPOUSEPRES" dcml="0" files="ExtractData" intrvl="discrete" name="SPOUSEPRES">
+  <location EndPos="91" StartPos="90" width="2"/>
   <labl>Spouse or unmarried partner in household</labl>
   <txt><![CDATA[SPOUSEPRES reports whether the ATUS respondent has a spouse or unmarried partner living in the household.
 
@@ -606,7 +696,7 @@ SPOUSEPRES was collected at the time of the ATUS interview.]]></txt>
   <varFormat schema="other" type="numeric"/>
 </var>
 <var ID="SPUSUALHRS" dcml="0" files="ExtractData" intrvl="discrete" name="SPUSUALHRS">
-  <location EndPos="79" StartPos="77" width="3"/>
+  <location EndPos="94" StartPos="92" width="3"/>
   <labl>Usual work hours (spouse or partner)</labl>
   <txt><![CDATA[SPUSUALHRS reports the number of hours the respondent's spouse or unmarried partner usually works per week.
 
@@ -1023,7 +1113,7 @@ SPUSUALHRS was collected at the time of the ATUS interview.]]></txt>
   <varFormat schema="other" type="numeric"/>
 </var>
 <var ID="SPEARNWEEK" dcml="2" files="ExtractData" intrvl="contin" name="SPEARNWEEK">
-  <location EndPos="86" StartPos="80" width="7"/>
+  <location EndPos="101" StartPos="95" width="7"/>
   <labl>Weekly earnings (spouse or partner)</labl>
   <txt><![CDATA[SPEARNWEEK reports the usual weekly earnings of the respondent's spouse or unmarried partner in dollars.
 
@@ -1038,8 +1128,67 @@ Top codes:2003+: Usual weekly earnings of the respondent's spouse or unmarried p
   <concept vocab="IPUMS">Spouse Characteristic Variables -- PERSON</concept>
   <varFormat schema="other" type="numeric"/>
 </var>
+<var ID="HH_NUMOWNKIDS" dcml="0" files="ExtractData" intrvl="discrete" name="HH_NUMOWNKIDS">
+  <location EndPos="103" StartPos="102" width="2"/>
+  <labl>Number of own children under 18 in household</labl>
+  <txt><![CDATA[HH_ NUMOWNKIDS reports the number of the respondent's own children under the age of 18 who live in the household.
+
+The total number of people in the household is also available (see HH_SIZE).  The total number of children in the household is available as well (see HH_NUMKIDS).  Other variables simply indicate the presence of a child in the household (see HH_CHILD) or the presence of the respondent's own child under the age of 18 in the household (see KIDUND18).
+
+The number of respondent's own children was collected at the time of the ATUS interview, 2-5 months after the final CPS interview.]]></txt>
+  <catgry>
+    <catValu>00</catValu>
+    <labl>0</labl>
+  </catgry>
+  <catgry>
+    <catValu>01</catValu>
+    <labl>1</labl>
+  </catgry>
+  <catgry>
+    <catValu>02</catValu>
+    <labl>2</labl>
+  </catgry>
+  <catgry>
+    <catValu>03</catValu>
+    <labl>3</labl>
+  </catgry>
+  <catgry>
+    <catValu>04</catValu>
+    <labl>4</labl>
+  </catgry>
+  <catgry>
+    <catValu>05</catValu>
+    <labl>5</labl>
+  </catgry>
+  <catgry>
+    <catValu>06</catValu>
+    <labl>6</labl>
+  </catgry>
+  <catgry>
+    <catValu>07</catValu>
+    <labl>7</labl>
+  </catgry>
+  <catgry>
+    <catValu>08</catValu>
+    <labl>8</labl>
+  </catgry>
+  <catgry>
+    <catValu>09</catValu>
+    <labl>9</labl>
+  </catgry>
+  <catgry>
+    <catValu>10</catValu>
+    <labl>10</labl>
+  </catgry>
+  <catgry>
+    <catValu>99</catValu>
+    <labl>NIU (Not in universe)</labl>
+  </catgry>
+  <concept vocab="IPUMS">Constructed Child Variables -- PERSON</concept>
+  <varFormat schema="other" type="numeric"/>
+</var>
 <var ID="QSPUSUALHRS" dcml="0" files="ExtractData" intrvl="discrete" name="QSPUSUALHRS">
-  <location EndPos="89" StartPos="87" width="3"/>
+  <location EndPos="106" StartPos="104" width="3"/>
   <labl>SPUSUALHRS: allocation flag</labl>
   <txt><![CDATA[SPUSUALHRS: allocation flag.]]></txt>
   <catgry>
@@ -1063,7 +1212,7 @@ Top codes:2003+: Usual weekly earnings of the respondent's spouse or unmarried p
   <notes>This variable functions as a data quality flag.</notes>
 </var>
 <var ID="QEDUC" dcml="0" files="ExtractData" intrvl="discrete" name="QEDUC">
-  <location EndPos="92" StartPos="90" width="3"/>
+  <location EndPos="109" StartPos="107" width="3"/>
   <labl>EDUC: allocation flag</labl>
   <txt><![CDATA[EDUC: allocation flag.]]></txt>
   <catgry>
@@ -1119,7 +1268,7 @@ Top codes:2003+: Usual weekly earnings of the respondent's spouse or unmarried p
   <notes>This variable functions as a data quality flag.</notes>
 </var>
 <var ID="QAGE" dcml="0" files="ExtractData" intrvl="discrete" name="QAGE">
-  <location EndPos="95" StartPos="93" width="3"/>
+  <location EndPos="112" StartPos="110" width="3"/>
   <labl>AGE: allocation flag</labl>
   <txt><![CDATA[AGE: allocation flag.]]></txt>
   <catgry>
@@ -1179,7 +1328,7 @@ Top codes:2003+: Usual weekly earnings of the respondent's spouse or unmarried p
   <notes>This variable functions as a data quality flag.</notes>
 </var>
 <var ID="QSEX" dcml="0" files="ExtractData" intrvl="discrete" name="QSEX">
-  <location EndPos="98" StartPos="96" width="3"/>
+  <location EndPos="115" StartPos="113" width="3"/>
   <labl>SEX: allocation flag</labl>
   <txt><![CDATA[SEX: allocation flag.]]></txt>
   <catgry>
@@ -1251,7 +1400,7 @@ Top codes:2003+: Usual weekly earnings of the respondent's spouse or unmarried p
   <notes>This variable functions as a data quality flag.</notes>
 </var>
 <var ID="QEDUCYRS" dcml="0" files="ExtractData" intrvl="discrete" name="QEDUCYRS">
-  <location EndPos="100" StartPos="99" width="2"/>
+  <location EndPos="117" StartPos="116" width="2"/>
   <labl>EDUCYRS: allocation flag</labl>
   <txt><![CDATA[EDUCYRS: allocation flag.
 
@@ -1273,7 +1422,7 @@ EDUCYRS was constructed from seven original variables.  QEDUCYRS reports if any 
   <notes>This variable functions as a data quality flag.</notes>
 </var>
   <var ID="ACT_CAREHH" dcml="0" files="ExtractData" intrvl="contin" name="ACT_CAREHH">
-    <location EndPos="104" StartPos="101" width="4"/>
+    <location EndPos="121" StartPos="118" width="4"/>
     <labl>ACT: Caring for and helping household members</labl>
     <txt><![CDATA[This variable indicates the minutes per day each respondent reported spending in caring for or helping any child or adult in the respondent's household, regardless of relationship, age, or physical or mental health status.]]></txt>
     <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
@@ -1281,7 +1430,7 @@ EDUCYRS was constructed from seven original variables.  QEDUCYRS reports if any 
     <varFormat schema="other" type="numeric"/>
   </var>
   <var ID="ACT_EDUC" dcml="0" files="ExtractData" intrvl="contin" name="ACT_EDUC">
-    <location EndPos="108" StartPos="105" width="4"/>
+    <location EndPos="125" StartPos="122" width="4"/>
     <labl>ACT: Educational activities</labl>
     <txt><![CDATA[This variable indicates the minutes per day each respondent reported spending in non-work education activities, such as taking classes, conducting research and homework, administrative tasks, and extracurricular activities except sports.]]></txt>
     <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
@@ -1289,7 +1438,7 @@ EDUCYRS was constructed from seven original variables.  QEDUCYRS reports if any 
     <varFormat schema="other" type="numeric"/>
   </var>
   <var ID="ACT_FOOD" dcml="0" files="ExtractData" intrvl="contin" name="ACT_FOOD">
-    <location EndPos="112" StartPos="109" width="4"/>
+    <location EndPos="129" StartPos="126" width="4"/>
     <labl>ACT: Eat and drinking</labl>
     <txt><![CDATA[This variable indicates the minutes per day each respondent reported spending in activities such as eating and drinking not done as work or a volunteer activity, whether the respondent was alone, with others, at home, at a place of purchase, in transit, or somewhere else.]]></txt>
     <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
@@ -1297,7 +1446,7 @@ EDUCYRS was constructed from seven original variables.  QEDUCYRS reports if any 
     <varFormat schema="other" type="numeric"/>
   </var>
   <var ID="ACT_HHACT" dcml="0" files="ExtractData" intrvl="contin" name="ACT_HHACT">
-    <location EndPos="116" StartPos="113" width="4"/>
+    <location EndPos="133" StartPos="130" width="4"/>
     <labl>ACT: Household activities</labl>
     <txt><![CDATA[This variable indicates the minutes per day each respondent reported spending in household activities such as maintaining their household, household management and organizational activities.]]></txt>
     <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
@@ -1305,7 +1454,7 @@ EDUCYRS was constructed from seven original variables.  QEDUCYRS reports if any 
     <varFormat schema="other" type="numeric"/>
   </var>
   <var ID="ACT_HHSERV" dcml="0" files="ExtractData" intrvl="contin" name="ACT_HHSERV">
-    <location EndPos="120" StartPos="117" width="4"/>
+    <location EndPos="137" StartPos="134" width="4"/>
     <labl>ACT: Household services</labl>
     <txt><![CDATA[This variable indicates the minutes per day each respondent reported spending in activities such as obtaining and purchasing household services provided by someone else. Household services include yard and house cleaning, cooking, pet care, tailoring and laundering services, and vehicle and home repairs, maintenance, and construction. Watching someone else perform paid household activities (cooking, cleaning, repairing, etc.) should be coded here, provided "watching" was the respondent's primary activity.]]></txt>
     <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
@@ -1313,7 +1462,7 @@ EDUCYRS was constructed from seven original variables.  QEDUCYRS reports if any 
     <varFormat schema="other" type="numeric"/>
   </var>
   <var ID="ACT_PCARE_NONSLEEP" dcml="0" files="ExtractData" intrvl="contin" name="ACT_PCARE_NONSLEEP">
-    <location EndPos="124" StartPos="121" width="4"/>
+    <location EndPos="141" StartPos="138" width="4"/>
     <labl>ACT_PCARE Non-Sleep Variables</labl>
     <txt><![CDATA[]]></txt>
     <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
@@ -1321,7 +1470,7 @@ EDUCYRS was constructed from seven original variables.  QEDUCYRS reports if any 
     <varFormat schema="other" type="numeric"/>
   </var>
   <var ID="ACT_PCARE_SLEEP_010101" dcml="0" files="ExtractData" intrvl="contin" name="ACT_PCARE_SLEEP_010101">
-    <location EndPos="128" StartPos="125" width="4"/>
+    <location EndPos="145" StartPos="142" width="4"/>
     <labl>ACT: Personal care Sleeping</labl>
     <txt><![CDATA[]]></txt>
     <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
@@ -1329,7 +1478,7 @@ EDUCYRS was constructed from seven original variables.  QEDUCYRS reports if any 
     <varFormat schema="other" type="numeric"/>
   </var>
   <var ID="ACT_PCARE_SLEEP_010102" dcml="0" files="ExtractData" intrvl="contin" name="ACT_PCARE_SLEEP_010102">
-    <location EndPos="132" StartPos="129" width="4"/>
+    <location EndPos="149" StartPos="146" width="4"/>
     <labl>ACT: Personal care Sleeplessness</labl>
     <txt><![CDATA[]]></txt>
     <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
@@ -1337,7 +1486,7 @@ EDUCYRS was constructed from seven original variables.  QEDUCYRS reports if any 
     <varFormat schema="other" type="numeric"/>
   </var>
   <var ID="ACT_PCARE_SLEEP_010199" dcml="0" files="ExtractData" intrvl="contin" name="ACT_PCARE_SLEEP_010199">
-    <location EndPos="136" StartPos="133" width="4"/>
+    <location EndPos="153" StartPos="150" width="4"/>
     <labl> ACT: Personal care Sleeping n.e.c.</labl>
     <txt><![CDATA[]]></txt>
     <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
@@ -1345,7 +1494,7 @@ EDUCYRS was constructed from seven original variables.  QEDUCYRS reports if any 
     <varFormat schema="other" type="numeric"/>
   </var>
   <var ID="ACT_PROFSERV" dcml="0" files="ExtractData" intrvl="contin" name="ACT_PROFSERV">
-    <location EndPos="140" StartPos="137" width="4"/>
+    <location EndPos="157" StartPos="154" width="4"/>
     <labl>ACT: Professional and personal care services</labl>
     <txt><![CDATA[This variable indicates the minutes per day each respondent reported spending in activities such as obtaining, receiving, and/or purchasing professional and personal care services provided by someone else. Professional services include child care, financial, legal, medical and other adult care, real estate, and veterinary. Personal care service activities include massages, haircuts, manicures, and tanning at salons.]]></txt>
     <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
@@ -1353,7 +1502,7 @@ EDUCYRS was constructed from seven original variables.  QEDUCYRS reports if any 
     <varFormat schema="other" type="numeric"/>
   </var>
   <var ID="ACT_PURCH" dcml="0" files="ExtractData" intrvl="contin" name="ACT_PURCH">
-    <location EndPos="144" StartPos="141" width="4"/>
+    <location EndPos="161" StartPos="158" width="4"/>
     <labl>ACT: Consumer purchases</labl>
     <txt><![CDATA[This variable indicates the minutes per day each respondent reported spending in activities such as purchases and rentals of consumer goods, regardless of mode or place of purchase or rental (in person, via telephone, over the internet, at home, or in a store).]]></txt>
     <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
@@ -1361,7 +1510,7 @@ EDUCYRS was constructed from seven original variables.  QEDUCYRS reports if any 
     <varFormat schema="other" type="numeric"/>
   </var>
   <var ID="ACT_RELIG" dcml="0" files="ExtractData" intrvl="contin" name="ACT_RELIG">
-    <location EndPos="148" StartPos="145" width="4"/>
+    <location EndPos="165" StartPos="162" width="4"/>
     <labl>ACT: Religious and spiritual activities</labl>
     <txt><![CDATA[This variable indicates the minutes per day each respondent reported spending in religious activities such as attending regular and special religious services and participating in other religion-related activities, such as church choirs, youth groups, orchestras, or unpaid teaching (unless identified as volunteer activities). This category also includes personal religious practices, such as praying, and personal spiritual practices not necessarily affiliated with formal religion.]]></txt>
     <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
@@ -1369,7 +1518,7 @@ EDUCYRS was constructed from seven original variables.  QEDUCYRS reports if any 
     <varFormat schema="other" type="numeric"/>
   </var>
   <var ID="ACT_SOCIAL" dcml="0" files="ExtractData" intrvl="contin" name="ACT_SOCIAL">
-    <location EndPos="152" StartPos="149" width="4"/>
+    <location EndPos="169" StartPos="166" width="4"/>
     <labl>ACT: Socializing, relaxing, and leisure</labl>
     <txt><![CDATA[This variable indicates the minutes per day each respondent reported spending in personal interest or leisure activities such as communicating with others and attending parties and meetings; and leisure activities such as relaxing, playing (passive) games (unless playing with children only), watching television, playing or listening to music, reading, writing, and all hobbies.]]></txt>
     <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
@@ -1377,15 +1526,25 @@ EDUCYRS was constructed from seven original variables.  QEDUCYRS reports if any 
     <varFormat schema="other" type="numeric"/>
   </var>
   <var ID="ACT_SPORTS" dcml="0" files="ExtractData" intrvl="contin" name="ACT_SPORTS">
-    <location EndPos="156" StartPos="153" width="4"/>
+    <location EndPos="173" StartPos="170" width="4"/>
     <labl>ACT: Sports, exercise, and recreation</labl>
     <txt><![CDATA[This variable indicates the minutes per day each respondent reported spending in sports, exercise and recreational activities such as pleasure boating, throwing a Frisbee, kite flying, or ballooning, and active, participatory outdoor games or activities, such as horseshoes, croquet, and paintball.]]></txt>
     <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
     <concept vocab="IPUMS">Time Use Variables -- PERSON</concept>
     <varFormat schema="other" type="numeric"/>
   </var>
+  <var ID="ACT_TRAVELing" dcml="0" files="ExtractData" intrvl="contin" name="ACT_TRAVELing">
+    <location EndPos="177" StartPos="174" width="4"/>
+    <labl>ACT: Traveling</labl>
+    <txt><![CDATA[This variable indicates the minutes per day each respondent reported spending in travel or transportation activities such as commuting, walking someplace or waiting for the bus or train.
+modification of ACT_TRAVEL
+from group "Activity coding structure"]]></txt>
+    <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
+    <concept vocab="IPUMS">Time Use Variables -- PERSON</concept>
+    <varFormat schema="other" type="numeric"/>
+  </var>
   <var ID="ACT_WORK" dcml="0" files="ExtractData" intrvl="contin" name="ACT_WORK">
-    <location EndPos="160" StartPos="157" width="4"/>
+    <location EndPos="181" StartPos="178" width="4"/>
     <labl>ACT: Working and Work-related Activities</labl>
     <txt><![CDATA[This variable indicates the minutes per day each respondent reported spending work activities such as working, doing activities as part of one's job, engaging in income-generating activities (not as part of one's job), and looking for jobs and interviewing.]]></txt>
     <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>

@@ -1,4 +1,4 @@
-Description: Revision of (CS 613 Project data extract)
+Description: Revision of (Revision of (CS 613 Project data extract))
 Samples selected:
       ATUS 2020
       ATUS 2021
@@ -19,29 +19,35 @@ Case Selection:               No
   SEX                          2  67-68           2     X       X       X       X       X       
   EDUC                         2  69-71           3     X       X       X       X       X       
   EDUCYRS                      2  72-74           3     X       X       X       X       X       
-  SPOUSEPRES                   2  75-76           2     X       X       X       X       X       
-  SPUSUALHRS                   2  77-79           3     X       X       X       X       X       
-  SPEARNWEEK                   2  80-86           7     X       X       X       X       X       
-  QSPUSUALHRS                q 2  87-89           3     X       X       X       X       X       
-  QEDUC                      q 2  90-92           3     X       X       X       X       X       
-  QAGE                       q 2  93-95           3     X       X       X       X       X       
-  QSEX                       q 2  96-98           3     X       X       X       X       X       
-  QEDUCYRS                   q 2  99-100          2     X       X       X       X       X       
-  ACT_CAREHH                   2 101-104          4     X       X       X       X       X       
-  ACT_EDUC                     2 105-108          4     X       X       X       X       X       
-  ACT_FOOD                     2 109-112          4     X       X       X       X       X       
-  ACT_HHACT                    2 113-116          4     X       X       X       X       X       
-  ACT_HHSERV                   2 117-120          4     X       X       X       X       X       
-  ACT_PCARE_NONSLEEP           2 121-124          4     X       X       X       X       X       
-  ACT_PCARE_SLEEP_010101       2 125-128          4     X       X       X       X       X       
-  ACT_PCARE_SLEEP_010102       2 129-132          4     X       X       X       X       X       
-  ACT_PCARE_SLEEP_010199       2 133-136          4     X       X       X       X       X       
-  ACT_PROFSERV                 2 137-140          4     X       X       X       X       X       
-  ACT_PURCH                    2 141-144          4     X       X       X       X       X       
-  ACT_RELIG                    2 145-148          4     X       X       X       X       X       
-  ACT_SOCIAL                   2 149-152          4     X       X       X       X       X       
-  ACT_SPORTS                   2 153-156          4     X       X       X       X       X       
-  ACT_WORK                     2 157-160          4     X       X       X       X       X       
+  FULLPART                     2  75-76           2     X       X       X       X       X       
+  UHRSWORKT                    2  77-80           4     X       X       X       X       X       
+  EARNWEEK                     2  81-87           7     X       X       X       X       X       
+  PAIDHOUR                     2  88-89           2     X       X       X       X       X       
+  SPOUSEPRES                   2  90-91           2     X       X       X       X       X       
+  SPUSUALHRS                   2  92-94           3     X       X       X       X       X       
+  SPEARNWEEK                   2  95-101          7     X       X       X       X       X       
+  HH_NUMOWNKIDS                2 102-103          2     X       X       X       X       X       
+  QSPUSUALHRS                q 2 104-106          3     X       X       X       X       X       
+  QEDUC                      q 2 107-109          3     X       X       X       X       X       
+  QAGE                       q 2 110-112          3     X       X       X       X       X       
+  QSEX                       q 2 113-115          3     X       X       X       X       X       
+  QEDUCYRS                   q 2 116-117          2     X       X       X       X       X       
+  ACT_CAREHH                   2 118-121          4     X       X       X       X       X       
+  ACT_EDUC                     2 122-125          4     X       X       X       X       X       
+  ACT_FOOD                     2 126-129          4     X       X       X       X       X       
+  ACT_HHACT                    2 130-133          4     X       X       X       X       X       
+  ACT_HHSERV                   2 134-137          4     X       X       X       X       X       
+  ACT_PCARE_NONSLEEP           2 138-141          4     X       X       X       X       X       
+  ACT_PCARE_SLEEP_010101       2 142-145          4     X       X       X       X       X       
+  ACT_PCARE_SLEEP_010102       2 146-149          4     X       X       X       X       X       
+  ACT_PCARE_SLEEP_010199       2 150-153          4     X       X       X       X       X       
+  ACT_PROFSERV                 2 154-157          4     X       X       X       X       X       
+  ACT_PURCH                    2 158-161          4     X       X       X       X       X       
+  ACT_RELIG                    2 162-165          4     X       X       X       X       X       
+  ACT_SOCIAL                   2 166-169          4     X       X       X       X       X       
+  ACT_SPORTS                   2 170-173          4     X       X       X       X       X       
+  ACT_TRAVELING                2 174-177          4     X       X       X       X       X       
+  ACT_WORK                     2 178-181          4     X       X       X       X       X       
 
 Variable Availability Key:
 All Years X - available in this sample
@@ -560,6 +566,106 @@ Time Use Variables:
     With whom specifications:
       None specified
 
+  ACT_TRAVELING
+    Activity specifications:
+      180000  Traveling
+          180101  Travel related to personal care
+          180199  Travel related to personal care, n.e.c.
+          180201  Travel related to housework
+          180202  Travel related to food and drink preparation, clean-up, and presentation (2004+)
+          180203  Travel related to interior maintenance, repair, and decoration (2004+)
+          180204  Travel related to exterior maintenance, repair, and decoration (2004+)
+          180205  Travel related to lawn, garden, and houseplant care (2004+)
+          180206  Travel related to care for animals and pets (not veterinary care) (2004+)
+          180207  Travel related to vehicle care and maintenance (by self) (2004+)
+          180208  Travel related to appliance, tool, and toy set-up, repair, and maintenance (by self) (2004+)
+          180209  Travel related to household management
+          180299  Travel related to household activities, n.e.c.
+          180301  Travel related to caring for and helping household children, inclusive (2003, 2004)
+          180302  Travel related to caring for and helping household children (2005+)
+          180303  Travel related to household children's education (2005+)
+          180304  Travel related to household children's health (2005+)
+          180305  Travel related to caring for household adults (2005+)
+          180306  Travel related to helping household adults (2005+)
+          180307  Travel related to caring for and helping household adults (2003, 2004)
+          180399  Travel related to caring for and helping household members, n.e.c.
+          180401  Travel related to caring for and helping non-household children, inclusive (2003, 2004)
+          180402  Travel related to caring for and helping non-household children (2005+)
+          180403  Travel related to non-household children's education (2005+)
+          180404  Travel related to non-household children's health (2005+)
+          180405  Travel related to caring for non-household adults (2005+)
+          180406  Travel related to helping non-household adults (2005+)
+          180407  Travel related to caring for and helping non-household adults (2003, 2004)
+          180499  Travel related to caring for and helping non-household members, n.e.c.
+          180501  Travel related to working
+          180502  Travel related to work-related activities
+          180503  Travel related to income-generating activities (2004+)
+          180504  Travel related to job search and interviewing (2004+)
+          180599  Travel related to work, n.e.c.
+          180601  Travel related to taking class
+          180602  Travel related to extracurricular activities (ex. sports) (2005+)
+          180603  Travel related to research or homework (2005+)
+          180604  Travel related to registration or administrative activities (2005+)
+          180605  Education-related travel, not commuting (2003, 2004)
+          180699  Travel related to education, n.e.c.
+          180701  Travel related to grocery shopping
+          180702  Travel related to other shopping, inclusive (2003, 2004)
+          180703  Travel related to purchasing food (not groceries) (2005+)
+          180704  Travel related to shopping, ex groceries, food, and gas (2005+)
+          180705  Travel related to purchasing gas (2004+)
+          180799  Travel related to consumer purchases, n.e.c.
+          180801  Travel related to using childcare services
+          180802  Travel related to using financial services and banking
+          180803  Travel related to using legal services
+          180804  Travel related to using medical services
+          180805  Travel related to using personal care services
+          180806  Travel related to using real estate services
+          180807  Travel related to using veterinary services
+          180899  Travel related to using professional and personal care services, n.e.c.
+          180901  Travel related to using household services
+          180902  Travel related to using home maintenance, repair, decoration, or construction services
+          180903  Travel related to using pet services (not veterinary care)
+          180904  Travel related to using lawn and garden services
+          180905  Travel related to using vehicle maintenance and repair services
+          180999  Travel related to using household services, n.e.c.
+          181001  Travel related to using government services
+          181002  Travel related to civic obligations and participation
+          181099  Travel related to government services and civic obligations, n.e.c.
+          181101  Travel related to eating and drinking
+          181199  Travel related to eating and drinking, n.e.c.
+          181201  Travel related to socializing and communicating
+          181202  Travel related to attending or hosting social events
+          181203  Travel related to relaxing and leisure (2003, 2004)
+          181204  Travel related to arts and entertainment
+          181205  Travel as a form of entertainment (2005+)
+          181206  Travel related to relaxing and leisure (2005+)
+          181299  Travel related to socializing, relaxing, and leisure, n.e.c.
+          181301  Travel related to participating in sports, exercise, or recreation
+          181302  Travel related to attending sporting or recreational events
+          181399  Travel related to sports, exercise, and recreation, n.e.c.
+          181401  Travel related to religious or spiritual practices
+          181499  Travel related to religious or spiritual activities, n.e.c.
+          181501  Travel related to volunteering
+          181599  Travel related to volunteer activities, n.e.c.
+          181601  Travel related to phone calls
+          181699  Travel related to phone calls, n.e.c.
+          181801  Security procedures related to traveling
+          181899  Security procedures related to traveling, n.e.c.
+          189999  Traveling, n.e.c.
+
+
+    Time specifications:
+      4:00 am - 16:00 pm
+
+    Secondary activity specifications: 
+      None specified
+
+    Location specifications:
+      None specified
+
+    With whom specifications:
+      None specified
+
   ACT_WORK
     Activity specifications:
       050000  Work and Work-Related Activities
@@ -701,6 +807,16 @@ EDUCYRS             Years of education
 321                 Doctoral degree
 999                 NIU (Not in universe)
 
+FULLPART            Full time/part time employment status
+01                  Full time
+02                  Part time
+99                  NIU (Not in universe)
+
+PAIDHOUR            Hourly or non-hourly pay
+01                  Paid hourly
+02                  Not paid hourly
+99                  NIU (Not in universe)
+
 SPOUSEPRES          Spouse or unmarried partner in household
 01                  Spouse present
 02                  Unmarried partner present
@@ -810,6 +926,20 @@ SPUSUALHRS          Usual work hours (spouse or partner)
 099                 99
 995                 Hours vary
 999                 NIU (Not in universe)
+
+HH_NUMOWNKIDS       Number of own children under 18 in household
+00                  0
+01                  1
+02                  2
+03                  3
+04                  4
+05                  5
+06                  6
+07                  7
+08                  8
+09                  9
+10                  10
+99                  NIU (Not in universe)
 
 QSPUSUALHRS         SPUSUALHRS: allocation flag
 000                 Value - no change
