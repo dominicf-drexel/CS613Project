@@ -4,6 +4,7 @@ from CreateFeatures import TransformIntoFeatures
 from MatrixCreation import RowsToMatrix, ExtractX, ExtractY
 from DataOperations import GenerateTrainingValidationIndices, GenerateTrainingValidationIndicesByFeatureValue, GetSubset
 import LinearRegression
+import LinearRegressionGradient
 import KNN
 import Statistics
 
@@ -30,10 +31,10 @@ print(f"y.shape={y.shape}")
 #print(y)
 
 # check the range of sleep time
-print(f"Sleep Time min = {np.min(y)}")
-print(f"Sleep Time mean = {np.mean(y)}")
-print(f"Sleep Time max = {np.max(y)}")
-print(f"Sleep Time std = {np.std(y)}")
+#print(f"Sleep Time min = {np.min(y)}")
+#print(f"Sleep Time mean = {np.mean(y)}")
+#print(f"Sleep Time max = {np.max(y)}")
+#print(f"Sleep Time std = {np.std(y)}")
 
 # check the range of the feature variables
 #i = 0
@@ -57,12 +58,17 @@ print(f"validation results = {validationresults.shape}")
 #Analysis:
 
 # linear regression algorithm
-# currently statistics are printed directly
-# from within the s_folds_validation method
 validation_stats, linear_models = LinearRegression.s_folds_validation(trainingdata, trainingresults, 5)
 print(f"LR Mean: {validation_stats['mean']}")
 print(f"LR STD: {validation_stats['std']}")
 print(f"LR ALL RMSE: {validation_stats['all_rmse']}")
+
+# linear regression gradient algorithm
+validation_stats, linear_models = LinearRegressionGradient.s_folds_validation(trainingdata, trainingresults, 5)
+print(f"LR Gradient Mean: {validation_stats['mean']}")
+print(f"LR Gradient STD: {validation_stats['std']}")
+
+
 
 # knn regression algorithm
 # gets statistics for all k_values but only the last k_value is used for ensemble
@@ -91,17 +97,22 @@ for k in k_values:
 # S-fold * runs = number of models
 # So if S-fold=5 then 5*100 models
 all_lr_predictions = []
+all_gd_predictions = []
 for run_models in linear_models: # 20 runs (hardcoded in LinearRegression.py)
     for model in run_models: # 5 (hardcoded in this file)
         lr_pred = model.predict(validationdata)
         all_lr_predictions.append(lr_pred)
-
+        lr_gd = LinearRegressionGradient.LinearRegressionGradient()
+        lr_gd.fit(trainingdata, trainingresults)
+        lr_gd_pred = lr_gd.predict(validationdata)
+        all_gd_predictions.append(lr_gd_pred)
 
 # average ALL linear regression predictions and KNN
 ensemble_predictions = []
 for i in range(len(validationdata)):
     lr_aggregate_prediction = np.mean([pred[i] for pred in all_lr_predictions])
-    final_ensemble_prediction = (lr_aggregate_prediction + knn_predictions[i]) / 2
+    gd_aggregate_prediction = np.mean([pred[i] for pred in all_gd_predictions])
+    final_ensemble_prediction = (lr_aggregate_prediction + gd_aggregate_prediction + knn_predictions[i]) / 3
     ensemble_predictions.append(final_ensemble_prediction)
 
 ensemble_predictions = np.array(ensemble_predictions)

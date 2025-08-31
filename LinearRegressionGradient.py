@@ -21,30 +21,43 @@ class LinearRegressionGradient:
         self.weights = None
         self.learn_rate = learn_rate
         self.epochs = epochs
+        self.mean = None
+        self.std = None
 
-    def preprocess(self, trainingdata, trainingresults, validationdata, validationresults):
-        y_train = trainingresults
-        y_train = y_train.reshape(-1, 1)
-        y_val = validationresults
-        y_val = y_val.reshape(-1, 1)
+    #def preprocess(self, trainingdata, trainingresults, validationdata, validationresults):
+    #    y_train = trainingresults
+    #    y_train = y_train.reshape(-1, 1)
+    #    y_val = validationresults
+    #    y_val = y_val.reshape(-1, 1)
 
-        mean = np.atleast_2d(np.mean(trainingdata, axis=0))
+    #    mean = np.atleast_2d(np.mean(trainingdata, axis=0))
 
-        std = np.atleast_2d(np.std(trainingdata, axis=0, ddof=1))
-        std[std == 0] = 1
+    #    std = np.atleast_2d(np.std(trainingdata, axis=0, ddof=1))
+    #    std[std == 0] = 1
 
-        z_scored_data_train = (trainingdata - mean) / std
-        bias_train = np.ones((len(trainingdata),1))
-        x_train = np.column_stack([bias_train, z_scored_data_train])
+    #    z_scored_data_train = (trainingdata - mean) / std
+    #    bias_train = np.ones((len(trainingdata),1))
+    #    x_train = np.column_stack([bias_train, z_scored_data_train])
 
-        z_scored_data_val = (validationdata - mean) / std
-        bias_val = np.ones((len(validationdata),1))
-        x_val = np.column_stack([bias_val, z_scored_data_val])
+    #    z_scored_data_val = (validationdata - mean) / std
+    #    bias_val = np.ones((len(validationdata),1))
+    #    x_val = np.column_stack([bias_val, z_scored_data_val])
 
-        return x_train, y_train, x_val, y_val
+    #    return x_train, y_train, x_val, y_val
 
 
-    def fit(self, x_train, y_train, x_val):
+    #def fit(self, x_train, y_train, x_val):
+    def fit(self, x, y):
+        self.mean = np.mean(x, axis=0)
+        self.std = np.std(x, axis=0, ddof=1)
+        self.std[self.std == 0] = 1
+
+        # normalize and add bias
+        x_normalized = (x - self.mean) / self.std
+        bias_column = np.ones((x.shape[0], 1))
+        x_train = np.column_stack([bias_column, x_normalized])
+        y_train = y.reshape(-1,1)
+
         self.weights = np.random.uniform(-0.0001, 0.0001, size=(len(x_train[0]),1))
 
         N = len(x_train)
@@ -54,14 +67,18 @@ class LinearRegressionGradient:
             gradient = (2/N)*(np.transpose(x_train))@(y_hat_train - y_train)
             self.weights = self.weights - (self.learn_rate*gradient)
 
-        y_hat_val = x_val @ self.weights
-        return y_hat_train, y_hat_val
+        #y_hat_val = x_val @ self.weights
+        #return y_hat_train, y_hat_val
     
     def predict(self, x):
-        predictions = x @ self.weights
-        return predictions
+        x_normalized = (x - self.mean) / self.std
+        bias_column = np.ones((x.shape[0], 1))
+        x_processed = np.column_stack([bias_column, x_normalized])
+
+        predictions = x_processed @ self.weights
+        return predictions.flatten()
     
-    
+"""
 def gradient_batch_regression(trainingdata, trainingresults, validationdata, validationresults, learn_rate=0.01, epochs=1000):
     lr = LinearRegressionGradient(learn_rate=learn_rate, epochs=epochs)
     x_train, y_train, x_val, y_val = lr.preprocess(trainingdata, trainingresults, validationdata, validationresults)
@@ -88,3 +105,51 @@ def gradient_batch_regression(trainingdata, trainingresults, validationdata, val
     print("Validation RMSE: ", rmse_val)
     print("Training SMAPE: ", smape_train)
     print("Validation SMAPE: ", smape_val)
+"""
+
+# copied from LinearRegression.py
+def s_folds_validation(x, y, S):
+    processed_data = np.concatenate((x, y.reshape(-1,1)), axis=1)   
+    
+    rmse_array = np.empty(20)
+    all_models = [] 
+    for i in range(20):
+        np.random.seed(i)
+        np.random.shuffle(processed_data)
+
+        folds = np.array_split(processed_data, S, axis=0)
+        squared_error_array = np.empty(S)
+        run_models = []
+
+        for fold in range(S):
+            validation = folds[fold]
+            training = np.concatenate(folds[:fold] + folds[fold+1:], axis=0)
+
+            X_TRAIN = training[:, :-1]
+            X_VAL = validation[:, :-1]
+            
+            Y_TRAIN = training[:,-1]
+            Y_VAL = validation[:,-1]
+
+            lr = LinearRegressionGradient()
+            lr.fit(X_TRAIN, Y_TRAIN)
+            run_models.append(lr) 
+            
+            Y_VAL_PREDICTED = lr.predict(X_VAL)
+
+            
+            squared_error = (Y_VAL - Y_VAL_PREDICTED)**2
+            mse = np.mean(squared_error)
+            squared_error_array = np.append(squared_error_array, mse)
+
+        all_models.append(run_models)
+
+        mse_total = np.mean(squared_error_array)
+        rmse = np.sqrt(mse_total)
+        rmse_array[i] = rmse
+
+    mean = np.mean(rmse_array)
+    std = np.std(rmse_array)
+
+    stats = {"mean":mean, "std":std, "all_rmse":rmse_array}
+    return stats, all_models
